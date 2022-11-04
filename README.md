@@ -1,4 +1,3 @@
 # Multicket
 # Screenshot
-
-<img src="./img/shop-100013.png" >
+![Secreenshot demo](https://github.com/jose055abraham/multicket/blob/master/img/shop-100013.png)
