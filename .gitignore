@@ -178,7 +178,7 @@ DocProject/Help/html
 
 # Click-Once directory
 publish/
-multicket.data/
+[Mm]ulticket.[Dd]ata/
 
 # Publish Web Output
 *.[Pp]ublish.xml
