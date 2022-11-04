@@ -1,0 +1,86 @@
+﻿<UserControl
+    x:Class="Multicket.Module.Views.ComprasSugeridas"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:ui="clr-namespace:Multicket.Module.Components"
+    d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}"
+    d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource White}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="55" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <StackPanel
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Margin="20,10,20,10">
+            <TextBlock
+                Margin="{StaticResource T-B1}"
+                FontSize="19"
+                FontWeight="Bold"
+                Foreground="{StaticResource BlueGray}"
+                Text="COMPRAS SUGERIDAS" />
+            <Label
+                Margin="{StaticResource T-T1}"
+                VerticalContentAlignment="Top"
+                ClipToBounds="True"
+                Content="Los siguientes productos tienen bajo inventario"
+                FontSize="14" />
+        </StackPanel>
+
+        <Border
+            Grid.Row="1"
+            Margin="{StaticResource T-LR4}"
+            BorderBrush="{StaticResource DarkBorderBrush}"
+            BorderThickness="{StaticResource T-RB1}">
+
+            <Border Margin="{StaticResource T-LR4}" Background="{StaticResource LightBrush}">
+                <DockPanel
+                    Margin="{StaticResource T-LRB7}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom">
+
+                    <ComboBox Width="250" />
+                </DockPanel>
+            </Border>
+        </Border>
+
+        <DataGrid
+            Grid.Row="2"
+            Margin="{StaticResource T-LR4}"
+            Background="{StaticResource White}">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Width="25" />
+                <DataGridTextColumn Width="200" Header="Código" />
+                <DataGridTextColumn Width="*" Header="Producto" />
+                <DataGridTextColumn Width="200" Header="Departamento" />
+                <DataGridTextColumn Width="100" Header="Exiatencia" />
+                <DataGridTextColumn Width="100" Header="Mínimo" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border
+            Grid.Row="3"
+            Background="{StaticResource NormalBrush}"
+            BorderBrush="{StaticResource NormalBorderBrush}"
+            BorderThickness="1">
+            <DockPanel
+                Margin="{StaticResource T-LR20}"
+                HorizontalAlignment="Right"
+                LastChildFill="False">
+                <ui:ImageButton />
+                <ui:ImageButton />
+            </DockPanel>
+        </Border>
+    </Grid>
+
+</UserControl>

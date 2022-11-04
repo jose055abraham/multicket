@@ -1,0 +1,512 @@
+﻿<UserControl
+    x:Class="Multicket.Module.Views.Ventas"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:ui="clr-namespace:Multicket.Module.Components"
+    d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}"
+    d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    Style="{StaticResource Control}"
+    mc:Ignorable="d">
+
+    <i:Interaction.Behaviors>
+        <ui:KeyboardBehavior KeyDown="{Binding BuscarProductoCommand}" KeyType="F10" />
+        <ui:KeyboardBehavior KeyDown="{Binding SalidasCommand}" KeyType="F8" />
+        <ui:KeyboardBehavior KeyDown="{Binding EntradasCommand}" KeyType="F7" />
+        <ui:KeyboardBehavior KeyDown="{Binding ProductosVariosCommand}" KeyType="Insert" />
+    </i:Interaction.Behaviors>
+
+    <Grid Background="{StaticResource WindowBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="43" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="75" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="0"
+            Margin="{StaticResource T-T1}"
+            Background="{StaticResource LinearGradientBlue}">
+
+            <TextBlock
+                Margin="{StaticResource T-LR4}"
+                VerticalAlignment="Center"
+                FontFamily="{StaticResource CenturyGothic}"
+                FontSize="17"
+                FontWeight="Bold"
+                Foreground="White"
+                Text="VENTAS-Ticket" />
+        </Border>
+
+        <Border Grid.Row="1" Background="{StaticResource BackgroudLightColor}">
+
+            <StackPanel Margin="2,0" Orientation="Horizontal">
+
+                <Label
+                    Margin="{StaticResource T-LR5}"
+                    VerticalAlignment="Center"
+                    Content="Código del Producto:"
+                    FontFamily="{StaticResource CenturyGothic}"
+                    FontSize="15"
+                    Foreground="{StaticResource Indigo}" />
+
+                <Button
+                    Width="16"
+                    Height="16"
+                    Margin="0,0,-30,0"
+                    Command="{Binding BuscarProductoCommand}"
+                    Style="{StaticResource BarCode}" />
+
+                <TextBox
+                    x:Name="Codigo"
+                    Width="330"
+                    Height="33"
+                    Margin="{StaticResource T-L2}"
+                    Padding="25,2,0,0"
+                    ui:Focus.IsKeyboardFocused="True"
+                    FontFamily="{StaticResource CourierPrimeRegular}"
+                    FontSize="18"
+                    Text="{Binding Codigo}"
+                    TextWrapping="Wrap">
+
+                    <i:Interaction.Triggers>
+                        <i:KeyTrigger Key="Enter">
+                            <i:InvokeCommandAction
+                                Command="{Binding AgregarCommand}"
+                                CommandParameter="{Binding ElementName=Codigo, Path=Text}"
+                                PassEventArgsToCommand="True" />
+                        </i:KeyTrigger>
+                    </i:Interaction.Triggers>
+
+                </TextBox>
+
+                <ui:ImageButton
+                    Height="33"
+                    Margin="{StaticResource T-L5}"
+                    Command="{Binding AgregarCommand}"
+                    CommandParameter="{Binding ElementName=Codigo, Path=Text}"
+                    Content="Agregar Producto"
+                    FontFamily="{StaticResource CenturyGothic}"
+                    FontFamilyKeyContent="{StaticResource CourierPrimeRegular}"
+                    Image="{StaticResource tick}"
+                    ImageHeight="16"
+                    ImageWidth="16"
+                    KeyContent="ENTER" />
+            </StackPanel>
+        </Border>
+
+        <Border
+            Grid.Row="2"
+            Margin="{StaticResource T-LR2}"
+            Panel.ZIndex="2"
+            Background="{StaticResource BackgroudLightDark}"
+            BorderBrush="{StaticResource LightBorderBrush}"
+            BorderThickness="{StaticResource T-LRT1}"
+            CornerRadius="1"
+            Effect="{StaticResource Shadow3}">
+
+            <StackPanel
+                Height="33"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <ui:ImageButton
+                    Margin="{StaticResource T-L5}"
+                    Command="{Binding ProductosVariosCommand}"
+                    Content="Varios"
+                    FontFamily="{StaticResource CenturyGothic}"
+                    FontFamilyKeyContent="{StaticResource CourierPrimeRegular}"
+                    Image="{StaticResource documents-text}"
+                    ImageHeight="16"
+                    ImageWidth="16"
+                    KeyContent="INS" />
+                <ui:ImageButton
+                    Margin="{StaticResource T-L5}"
+                    Content="Art. Común"
+                    FontFamily="{StaticResource CenturyGothic}"
+                    FontFamilyKeyContent="{StaticResource CourierPrimeRegular}"
+                    Image="{StaticResource blue-document}"
+                    ImageHeight="16"
+                    ImageWidth="16"
+                    KeyContent="CTRL + P" />
+                <ui:ImageButton
+                    Margin="{StaticResource T-L5}"
+                    Command="{Binding BuscarProductoCommand}"
+                    Content="Buscar"
+                    FontFamily="{StaticResource CenturyGothic}"
+                    FontFamilyKeyContent="{StaticResource CourierPrimeRegular}"
+                    Image="{StaticResource magnifier}"
+                    ImageHeight="16"
+                    ImageWidth="16"
+                    KeyContent="F10" />
+                <ui:ImageButton
+                    Margin="{StaticResource T-L5}"
+                    Command="{Binding AplicarPrecioMayoreoCommand}"
+                    Content="Mayoreo"
+                    FontFamily="{StaticResource CenturyGothic}"
+                    FontFamilyKeyContent="{StaticResource CourierPrimeRegular}"
+                    Image="{StaticResource star}"
+                    ImageHeight="16"
+                    ImageWidth="16"
+                    KeyContent="F11" />
+                <ui:ImageButton
+                    Margin="{StaticResource T-L5}"
+                    ui:Click.Command="{Binding EntradasCommand}"
+                    Content="Entradas"
+                    FontFamily="{StaticResource CenturyGothic}"
+                    FontFamilyKeyContent="{StaticResource CourierPrimeRegular}"
+                    Image="{StaticResource money_add}"
+                    ImageHeight="16"
+                    ImageWidth="16"
+                    KeyContent="F7" />
+                <ui:ImageButton
+                    Margin="{StaticResource T-L5}"
+                    ui:Click.Command="{Binding SalidasCommand}"
+                    Content="Salidas"
+                    FontFamily="{StaticResource CenturyGothic}"
+                    FontFamilyKeyContent="{StaticResource CourierPrimeRegular}"
+                    Image="{StaticResource money_delete}"
+                    ImageHeight="16"
+                    ImageWidth="16"
+                    KeyContent="F8" />
+                <ui:ImageButton
+                    Margin="{StaticResource T-L5}"
+                    Content="Borrar Art."
+                    FontFamily="{StaticResource CenturyGothic}"
+                    FontFamilyKeyContent="{StaticResource CourierPrimeRegular}"
+                    Image="{StaticResource bin-full}"
+                    ImageHeight="16"
+                    ImageWidth="16"
+                    KeyContent="DEL" />
+                <ui:ImageButton
+                    Margin="{StaticResource T-L5}"
+                    Content="Verificador"
+                    FontFamily="{StaticResource CenturyGothic}"
+                    FontFamilyKeyContent="{StaticResource CourierPrimeRegular}"
+                    Image="{StaticResource binocular}"
+                    ImageHeight="16"
+                    ImageWidth="16"
+                    KeyContent="F9" />
+            </StackPanel>
+
+        </Border>
+
+        <Border Grid.Row="3" Background="{DynamicResource SolidBorderBrush}">
+
+            <TabControl
+                Padding="0"
+                Background="Transparent"
+                BorderThickness="0">
+
+                <TabItem Header="Ventas">
+
+                    <Grid Margin="0" Background="{StaticResource White}">
+                        <Grid.ColumnDefinitions>
+                            <!--<ColumnDefinition Width="20" />-->
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="450" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="99" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <DataGrid
+                            Grid.ColumnSpan="6"
+                            Panel.ZIndex="2"
+                            Background="{x:Null}"
+                            ItemsSource="{Binding VentaItems}"
+                            RowHeaderStyle="{StaticResource DataGridRowHeaderBasic}"
+                            SelectedItem="{Binding SelectedVentaItem}">
+
+                            <DataGrid.Columns>
+
+                                <DataGridTextColumn
+                                    Width="150"
+                                    MinWidth="150"
+                                    MaxWidth="150"
+                                    AutomationProperties.IsColumnHeader="True"
+                                    Binding="{Binding Codigo}"
+                                    CellStyle="{StaticResource ColumnBarCode}"
+                                    Header="Código de Barras" />
+
+                                <DataGridTextColumn
+                                    Width="450"
+                                    Binding="{Binding Descripcion}"
+                                    Header="Descripción del Producto" />
+
+                                <DataGridTextColumn
+                                    Width="100"
+                                    Binding="{Binding PrecioUnitario, StringFormat={}{0:C}}"
+                                    Header="Precio Venta" />
+
+                                <DataGridTextColumn
+                                    Width="100"
+                                    Binding="{Binding Cantidad}"
+                                    CellStyle="{StaticResource ColumnCant}"
+                                    Header="Cant." />
+
+                                <DataGridTextColumn
+                                    Width="100"
+                                    Binding="{Binding Importe, StringFormat={}{0:C}}"
+                                    CellStyle="{StaticResource ColumnImporte}"
+                                    Header="Importe" />
+
+                                <DataGridTextColumn
+                                    Width="*"
+                                    Binding="{Binding Existencia, Converter={StaticResource NumberFormat}}"
+                                    CellStyle="{StaticResource ColumnExistent}"
+                                    Header="Existencia" />
+
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <Border Grid.Column="0" />
+                        <Border Grid.Column="0" Background="#E9F3FD" />
+                        <Border Grid.Column="1" />
+                        <Border Grid.Column="2" />
+                        <Border Grid.Column="3" />
+                        <Border Grid.Column="4" Background="#B6EEBF" />
+                        <Border Grid.Column="4" Background="#C6EFCE" />
+                        <Border Grid.Column="5" />
+
+
+
+                    </Grid>
+
+                </TabItem>
+            </TabControl>
+
+        </Border>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="300" />
+            </Grid.ColumnDefinitions>
+
+            <Border
+                Grid.Column="0"
+                BorderBrush="{StaticResource White}"
+                BorderThickness="{StaticResource T-T2}">
+
+                <Border
+                    Background="{StaticResource LinearGradientWhite}"
+                    BorderBrush="{StaticResource LightGray}"
+                    BorderThickness="{StaticResource T-B1}">
+
+                    <Border BorderBrush="{StaticResource GrayOxid}" BorderThickness="{StaticResource T-RB1}">
+
+                        <Grid Margin="{StaticResource T-LR5}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="151" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                    <TextBlock
+                                        Width="55"
+                                        VerticalAlignment="Bottom"
+                                        FontSize="25"
+                                        Foreground="#1F59E6"
+                                        Text="{Binding NumProductos, FallbackValue='1'}"
+                                        TextAlignment="Center" />
+
+                                    <TextBlock
+                                        VerticalAlignment="Bottom"
+                                        FontSize="19"
+                                        Foreground="{StaticResource BlueDark}"
+                                        Text="Productos en la venta actual."
+                                        TextAlignment="Center" />
+                                </StackPanel>
+
+                                <StackPanel
+                                    Grid.Row="1"
+                                    Margin="{StaticResource T-L5}"
+                                    Orientation="Horizontal">
+
+                                    <ui:ImageButton
+                                        Margin="{StaticResource T-L5}"
+                                        Image="{StaticResource arrow_refresh}"
+                                        ImageHeight="16"
+                                        ImageWidth="16"
+                                        KeyContent="F5 - Cambiar" />
+
+                                    <ui:ImageButton
+                                        Margin="{StaticResource T-L5}"
+                                        Image="{StaticResource traffic-light-single}"
+                                        ImageHeight="16"
+                                        ImageWidth="16"
+                                        KeyContent="Pendiente" />
+
+                                    <ui:ImageButton
+                                        Margin="{StaticResource T-L5}"
+                                        Content="Eliminar"
+                                        FontFamilyKeyContent="{StaticResource CourierPrimeRegular}"
+                                        FontWeightKeyContent="Black"
+                                        Image="{StaticResource trash-icon}"
+                                        ImageHeight="16"
+                                        ImageWidth="16"
+                                        KeyContent="F5" />
+                                </StackPanel>
+                            </Grid>
+
+                            <StackPanel
+                                Grid.Column="1"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center">
+
+                                <ui:ImageButton
+                                    Width="150"
+                                    Height="60"
+                                    Content="- Cobar"
+                                    FontFamilyKeyContent="{StaticResource CourierPrimeRegular}"
+                                    FontSize="17"
+                                    FontWeightKeyContent="Black"
+                                    Foreground="#004000"
+                                    Image="{StaticResource cart_go}"
+                                    ImageHeight="16"
+                                    ImageWidth="16"
+                                    KeyContent="F12" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Border>
+            </Border>
+
+            <Border
+                Grid.Column="1"
+                BorderBrush="{StaticResource White}"
+                BorderThickness="{StaticResource T-T2}">
+
+                <Border
+                    Background="#E9EEF3"
+                    BorderBrush="#C0C0C0"
+                    BorderThickness="0,0,1,1">
+
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontFamily="{StaticResource KameronBold}"
+                        FontSize="50"
+                        Foreground="#0040A8"
+                        Text="{Binding ImporteTotal, StringFormat={}{0:C}, FallbackValue='$00.00'}" />
+                </Border>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="5" Background="{StaticResource BackgroudLightColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="370" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="400" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                </Grid.RowDefinitions>
+
+                <StackPanel
+                    Grid.Row="0"
+                    Margin="{StaticResource T-LR20}"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
+
+                    <Label
+                        Content="Total:"
+                        FontSize="14"
+                        FontWeight="DemiBold" />
+
+                    <Label
+                        Margin="57,0,0,0"
+                        Content="Pagó Con:"
+                        FontSize="14"
+                        FontWeight="DemiBold" />
+
+                    <Label
+                        Margin="49,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Content="Cambio:"
+                        FontSize="14"
+                        FontWeight="DemiBold" />
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Row="1"
+                    Margin="30,0"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        Width="77"
+                        FontFamily="{StaticResource KameronRegular}"
+                        FontSize="15"
+                        Foreground="{StaticResource Blue}"
+                        Text="{Binding ImporteTotal, StringFormat={}{0:C}, FallbackValue='$00.00'}" />
+
+                    <TextBlock
+                        Width="77"
+                        Margin="20,0,30,0"
+                        FontFamily="{StaticResource KameronRegular}"
+                        FontSize="15"
+                        Foreground="{StaticResource Blue}"
+                        Text="{Binding ImporteTotal, StringFormat={}{0:C}, FallbackValue='$00.00'}" />
+
+                    <TextBlock
+                        Width="77"
+                        Margin="20,0"
+                        FontFamily="{StaticResource KameronRegular}"
+                        FontSize="15"
+                        Foreground="{StaticResource Blue}"
+                        Text="{Binding ImporteTotal, StringFormat={}{0:C}, FallbackValue='$00.00'}" />
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                <ui:ImageButton
+                    Width="33"
+                    Height="22"
+                    Image="{StaticResource note_delete}"
+                    ImageHeight="16"
+                    ImageWidth="16" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+
+                <ui:ImageButton
+                    Height="30"
+                    Margin="{StaticResource T-L10}"
+                    Image="{StaticResource printer}"
+                    ImageHeight="16"
+                    ImageWidth="16"
+                    KeyContent="Reimprimir Último Ticket" />
+
+                <ui:ImageButton
+                    Height="30"
+                    Margin="{StaticResource T-L5}"
+                    Command="{Binding VentasDelDiaCommand}"
+                    Image="{StaticResource document-copy}"
+                    ImageHeight="17"
+                    ImageWidth="17"
+                    KeyContent="Ventas del día y Devoluciones" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</UserControl>

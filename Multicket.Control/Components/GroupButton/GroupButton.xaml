@@ -1,0 +1,63 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:component="clr-namespace:Multicket.Module.Components"
+    xmlns:convert="clr-namespace:Multicket.Module">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Control;component/Themes/Thickness.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Control;component/Themes/Colors.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Control;component/Themes/Button.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <convert:VisibilityConvertor x:Key="VisibilityConvertor" />
+
+    <Style TargetType="{x:Type component:GroupButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type component:GroupButton}">
+                    <RadioButton
+                        Command="{TemplateBinding Command}"
+                        CommandParameter="{TemplateBinding CommandParameter}"
+                        GroupName="{TemplateBinding GroupName}"
+                        IsChecked="{TemplateBinding IsChecked}"
+                        Style="{StaticResource GroupButton}">
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+
+                            <Image
+                                Width="{TemplateBinding ImageWidth}"
+                                Height="{TemplateBinding ImageHeight}"
+                                Margin="{StaticResource T-LR4}"
+                                VerticalAlignment="Center"
+                                SnapsToDevicePixels="True"
+                                Source="{TemplateBinding Image}"
+                                Stretch="Fill"
+                                Visibility="{TemplateBinding Image,
+                                                             Converter={StaticResource VisibilityConvertor}}" />
+
+                            <Label
+                                VerticalAlignment="Center"
+                                Content="{TemplateBinding KeyContent}"
+                                FontFamily="{TemplateBinding FontFamilyKeyContent}"
+                                FontWeight="{TemplateBinding FontWeightKeyContent}"
+                                Visibility="{TemplateBinding KeyContent,
+                                                             Converter={StaticResource VisibilityConvertor}}" />
+
+                            <TextBlock
+                                Margin="{StaticResource T-LR4}"
+                                VerticalAlignment="Center"
+                                FontFamily="{TemplateBinding FontFamily}"
+                                FontWeight="{TemplateBinding FontWeight}"
+                                Text="{TemplateBinding Content}" />
+
+                        </StackPanel>
+                    </RadioButton>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

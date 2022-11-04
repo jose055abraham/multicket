@@ -1,0 +1,173 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--  Thickness left  -->
+    <Thickness x:Key="T-L1">1, 0, 0, 0</Thickness>
+    <Thickness x:Key="T-L2">2, 0, 0, 0</Thickness>
+    <Thickness x:Key="T-L3">3, 0, 0, 0</Thickness>
+    <Thickness x:Key="T-L4">4, 0, 0, 0</Thickness>
+    <Thickness x:Key="T-L5">5, 0, 0, 0</Thickness>
+    <Thickness x:Key="T-L6">6, 0, 0, 0</Thickness>
+    <Thickness x:Key="T-L7">7, 0, 0, 0</Thickness>
+    <Thickness x:Key="T-L8">8, 0, 0, 0</Thickness>
+    <Thickness x:Key="T-L9">9, 0, 0, 0</Thickness>
+    <Thickness x:Key="T-L10">10, 0, 0, 0</Thickness>
+    <Thickness x:Key="T-L20">20, 0, 0, 0</Thickness>
+
+    <!--  Thickness right  -->
+    <Thickness x:Key="T-R1">0, 0, 1, 0</Thickness>
+    <Thickness x:Key="T-R2">0, 0, 2, 0</Thickness>
+    <Thickness x:Key="T-R3">0, 0, 3, 0</Thickness>
+    <Thickness x:Key="T-R4">0, 0, 4, 0</Thickness>
+    <Thickness x:Key="T-R5">0, 0, 5, 0</Thickness>
+    <Thickness x:Key="T-R6">0, 0, 6, 0</Thickness>
+    <Thickness x:Key="T-R7">0, 0, 7, 0</Thickness>
+    <Thickness x:Key="T-R8">0, 0, 8, 0</Thickness>
+    <Thickness x:Key="T-R9">0, 0, 9, 0</Thickness>
+    <Thickness x:Key="T-R10">0, 0, 10, 0</Thickness>
+    <Thickness x:Key="T-R20">0, 0, 20, 0</Thickness>
+
+    <!--  Thickness top  -->
+    <Thickness x:Key="T-T1">0, 1, 0, 0</Thickness>
+    <Thickness x:Key="T-T2">0, 2, 0, 0</Thickness>
+    <Thickness x:Key="T-T3">0, 3, 0, 0</Thickness>
+    <Thickness x:Key="T-T4">0, 4, 0, 0</Thickness>
+    <Thickness x:Key="T-T5">0, 5, 0, 0</Thickness>
+    <Thickness x:Key="T-T6">0, 6, 0, 0</Thickness>
+    <Thickness x:Key="T-T7">0, 7, 0, 0</Thickness>
+    <Thickness x:Key="T-T8">0, 8, 0, 0</Thickness>
+    <Thickness x:Key="T-T9">0, 9, 0, 0</Thickness>
+    <Thickness x:Key="T-T10">0, 10, 0, 0</Thickness>
+    <Thickness x:Key="T-T20">0, 20, 0, 0</Thickness>
+
+    <!--  Thickness bottom  -->
+    <Thickness x:Key="T-B1">0, 0, 0, 1</Thickness>
+    <Thickness x:Key="T-B2">0, 0, 0, 2</Thickness>
+    <Thickness x:Key="T-B3">0, 0, 0, 3</Thickness>
+    <Thickness x:Key="T-B4">0, 0, 0, 4</Thickness>
+    <Thickness x:Key="T-B5">0, 0, 0, 5</Thickness>
+    <Thickness x:Key="T-B6">0, 0, 0, 6</Thickness>
+    <Thickness x:Key="T-B7">0, 0, 0, 7</Thickness>
+    <Thickness x:Key="T-B8">0, 0, 0, 8</Thickness>
+    <Thickness x:Key="T-B9">0, 0, 0, 9</Thickness>
+    <Thickness x:Key="T-B10">0, 0, 0, 10</Thickness>
+    <Thickness x:Key="T-B20">0, 0, 0, 20</Thickness>
+
+    <!--  Thickness left, right  -->
+    <Thickness x:Key="T-LR1">1, 0, 1, 0</Thickness>
+    <Thickness x:Key="T-LR2">2, 0, 2, 0</Thickness>
+    <Thickness x:Key="T-LR3">3, 0, 3, 0</Thickness>
+    <Thickness x:Key="T-LR4">4, 0, 4, 0</Thickness>
+    <Thickness x:Key="T-LR5">5, 0, 5, 0</Thickness>
+    <Thickness x:Key="T-LR6">6, 0, 6, 0</Thickness>
+    <Thickness x:Key="T-LR7">7, 0, 7, 0</Thickness>
+    <Thickness x:Key="T-LR8">8, 8, 8, 0</Thickness>
+    <Thickness x:Key="T-LR9">9, 0, 9, 0</Thickness>
+    <Thickness x:Key="T-LR10">10, 0, 10, 0</Thickness>
+    <Thickness x:Key="T-LR20">20, 0, 20, 0</Thickness>
+
+    <!--  Thickness left, top  -->
+    <Thickness x:Key="T-LT1">1, 1, 0, 0</Thickness>
+    <Thickness x:Key="T-LT2">2, 2, 0, 0</Thickness>
+    <Thickness x:Key="T-LT3">3, 3, 0, 0</Thickness>
+    <Thickness x:Key="T-LT4">4, 4, 0, 0</Thickness>
+    <Thickness x:Key="T-LT5">5, 5, 0, 0</Thickness>
+    <Thickness x:Key="T-LT6">6, 6, 0, 0</Thickness>
+    <Thickness x:Key="T-LT7">7, 7, 0, 0</Thickness>
+    <Thickness x:Key="T-LT8">8, 8, 0, 0</Thickness>
+    <Thickness x:Key="T-LT9">9, 9, 0, 0</Thickness>
+    <Thickness x:Key="T-LT10">10, 10, 0, 0</Thickness>
+    <Thickness x:Key="T-LT20">20, 20, 0, 0</Thickness>
+
+    <!--  Thickness right, top  -->
+    <Thickness x:Key="T-RT1">0, 1, 1, 0</Thickness>
+    <Thickness x:Key="T-RT2">0, 2, 2, 0</Thickness>
+    <Thickness x:Key="T-RT3">0, 3, 3, 0</Thickness>
+    <Thickness x:Key="T-RT4">0, 4, 4, 0</Thickness>
+    <Thickness x:Key="T-RT5">0, 5, 5, 0</Thickness>
+    <Thickness x:Key="T-RT6">0, 6, 6, 0</Thickness>
+    <Thickness x:Key="T-RT7">0, 7, 7, 0</Thickness>
+    <Thickness x:Key="T-RT8">0, 8, 8, 0</Thickness>
+    <Thickness x:Key="T-RT9">0, 9, 9, 0</Thickness>
+    <Thickness x:Key="T-RT10">0, 10, 10, 0</Thickness>
+    <Thickness x:Key="T-RT20">0, 20, 20, 0</Thickness>
+
+    <!--  Thickness left, bottom  -->
+    <Thickness x:Key="T-LB1">1, 0, 0, 1</Thickness>
+    <Thickness x:Key="T-LB2">2, 0, 0, 2</Thickness>
+    <Thickness x:Key="T-LB3">3, 0, 0, 3</Thickness>
+    <Thickness x:Key="T-LB4">4, 0, 0, 4</Thickness>
+    <Thickness x:Key="T-LB5">5, 0, 0, 5</Thickness>
+    <Thickness x:Key="T-LB6">6, 0, 0, 6</Thickness>
+    <Thickness x:Key="T-LB7">7, 0, 0, 7</Thickness>
+    <Thickness x:Key="T-LB8">8, 0, 0, 8</Thickness>
+    <Thickness x:Key="T-LB9">9, 0, 0, 9</Thickness>
+    <Thickness x:Key="T-LB10">10, 0, 0, 10</Thickness>
+    <Thickness x:Key="T-LB20">20, 0, 0, 20</Thickness>
+
+    <!--  Thickness right, bottom  -->
+    <Thickness x:Key="T-RB1">0, 0, 1, 1</Thickness>
+    <Thickness x:Key="T-RB2">0, 0, 2, 2</Thickness>
+    <Thickness x:Key="T-RB3">0, 0, 3, 3</Thickness>
+    <Thickness x:Key="T-RB4">0, 0, 4, 4</Thickness>
+    <Thickness x:Key="T-RB5">0, 0, 5, 5</Thickness>
+    <Thickness x:Key="T-RB6">0, 0, 6, 6</Thickness>
+    <Thickness x:Key="T-RB7">0, 0, 7, 7</Thickness>
+    <Thickness x:Key="T-RB8">0, 0, 8, 8</Thickness>
+    <Thickness x:Key="T-RB9">0, 0, 9, 9</Thickness>
+    <Thickness x:Key="T-RB10">0, 0, 10, 10</Thickness>
+    <Thickness x:Key="T-RB20">0, 0, 20, 20</Thickness>
+
+    <!--  Thickness top, bottom  -->
+    <Thickness x:Key="T-TB1">0 1 0 1</Thickness>
+    <Thickness x:Key="T-TB2">0 2 0 2</Thickness>
+    <Thickness x:Key="T-TB3">0 3 0 3</Thickness>
+    <Thickness x:Key="T-TB4">0 4 0 4</Thickness>
+    <Thickness x:Key="T-TB5">0 5 0 5</Thickness>
+    <Thickness x:Key="T-TB6">0 6 0 6</Thickness>
+    <Thickness x:Key="T-TB7">0 7 0 7</Thickness>
+    <Thickness x:Key="T-TB8">0 8 0 8</Thickness>
+    <Thickness x:Key="T-TB9">0 9 0 9</Thickness>
+    <Thickness x:Key="T-TB10">0 10 0 10</Thickness>
+    <Thickness x:Key="T-TB20">0 20 0 20</Thickness>
+
+    <!--  Thickness left, right, top  -->
+    <Thickness x:Key="T-LRT1">1, 1, 1, 0</Thickness>
+    <Thickness x:Key="T-LRT2">2, 2, 2, 0</Thickness>
+    <Thickness x:Key="T-LRT3">3, 3, 3, 0</Thickness>
+    <Thickness x:Key="T-LRT4">4, 4, 4, 0</Thickness>
+    <Thickness x:Key="T-LRT5">5, 5, 5, 0</Thickness>
+    <Thickness x:Key="T-LRT6">6, 6, 6, 0</Thickness>
+    <Thickness x:Key="T-LRT7">7, 7, 7, 0</Thickness>
+    <Thickness x:Key="T-LRT8">8, 8, 8, 0</Thickness>
+    <Thickness x:Key="T-LRT9">9, 9, 9, 0</Thickness>
+    <Thickness x:Key="T-LRT10">10, 10, 10, 0</Thickness>
+    <Thickness x:Key="T-LRT20">20, 20, 20, 0</Thickness>
+
+    <!--  Thickness left, right, bottom  -->
+    <Thickness x:Key="T-LRB1">1, 0, 1, 1</Thickness>
+    <Thickness x:Key="T-LRB2">2, 0, 2, 2</Thickness>
+    <Thickness x:Key="T-LRB3">3, 0, 3, 3</Thickness>
+    <Thickness x:Key="T-LRB4">4, 0, 4, 4</Thickness>
+    <Thickness x:Key="T-LRB5">5, 0, 5, 5</Thickness>
+    <Thickness x:Key="T-LRB6">6, 0, 6, 6</Thickness>
+    <Thickness x:Key="T-LRB7">7, 0, 7, 7</Thickness>
+    <Thickness x:Key="T-LRB8">8, 0, 8, 8</Thickness>
+    <Thickness x:Key="T-LRB9">9, 0, 9, 9</Thickness>
+    <Thickness x:Key="T-LRB10">10, 0, 10, 10</Thickness>
+    <Thickness x:Key="T-LRB20">20, 0, 20, 20</Thickness>
+
+    <!--  Thickness left, top, right, bottom  -->
+    <Thickness x:Key="T-LTRB1">1</Thickness>
+    <Thickness x:Key="T-LTRB2">2</Thickness>
+    <Thickness x:Key="T-LTRB3">3</Thickness>
+    <Thickness x:Key="T-LTRB4">4</Thickness>
+    <Thickness x:Key="T-LTRB5">5</Thickness>
+    <Thickness x:Key="T-LTRB6">6</Thickness>
+    <Thickness x:Key="T-LTRB7">7</Thickness>
+    <Thickness x:Key="T-LTRB8">8</Thickness>
+    <Thickness x:Key="T-LTRB9">9</Thickness>
+    <Thickness x:Key="T-LTRB10">10</Thickness>
+    <Thickness x:Key="T-LTRB20">20</Thickness>
+
+
+</ResourceDictionary>

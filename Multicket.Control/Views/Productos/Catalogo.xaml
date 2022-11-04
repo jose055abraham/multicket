@@ -1,0 +1,133 @@
+﻿<UserControl
+    x:Class="Multicket.Module.Views.Catalogo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:ui="clr-namespace:Multicket.Module.Components"
+    d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}"
+    d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    Style="{StaticResource Control}"
+    mc:Ignorable="d">
+
+    <Border Background="{StaticResource WindowBackgroundBrush}">
+        <Grid Margin="{StaticResource T-LR5}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel
+                Grid.Row="0"
+                Margin="{StaticResource T-L10}"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+
+                <TextBlock
+                    FontSize="19"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource Yellow}"
+                    Text="CATÁLOGO DE PRODUCTOS" />
+            </StackPanel>
+
+            <Border Grid.Row="1">
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="55" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Border
+                        Grid.Row="0"
+                        BorderBrush="{StaticResource DarkBorderBrush}"
+                        BorderThickness="{StaticResource T-RB1}">
+
+                        <Border Background="{StaticResource LightBrush}">
+                            <DockPanel Margin="{StaticResource T-LRB7}" VerticalAlignment="Bottom">
+
+                                <Border
+                                    BorderBrush="{StaticResource BlueGray}"
+                                    BorderThickness="{StaticResource T-T1}"
+                                    CornerRadius="3">
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <Image
+                                            Width="16"
+                                            Height="16"
+                                            Margin="0,0,-30,0"
+                                            Panel.ZIndex="8"
+                                            Source="{StaticResource magnifier}" />
+                                        <TextBox
+                                            Width="255"
+                                            Height="33"
+                                            Padding="25,2,0,0"
+                                            ui:Focus.IsFocused="True"
+                                            FontFamily="{StaticResource CourierPrimeRegular}"
+                                            FontSize="18"
+                                            Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}">
+
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="TextChanged">
+                                                    <i:InvokeCommandAction Command="{Binding SearchChangedCommand}" />
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
+                                    </StackPanel>
+                                </Border>
+
+                                <DockPanel HorizontalAlignment="Right">
+                                    <StackPanel
+                                        Width="180"
+                                        Margin="{StaticResource T-R5}"
+                                        VerticalAlignment="Bottom">
+                                        <Label
+                                            Margin="0,-25,0,0"
+                                            HorizontalContentAlignment="Center"
+                                            Content="Departamento" />
+                                        <ComboBox Height="23">
+                                            <ComboBoxItem IsSelected="True">- Todos -</ComboBoxItem>
+                                        </ComboBox>
+                                    </StackPanel>
+                                    <ui:ImageButton
+                                        Margin="{StaticResource T-R5}"
+                                        Image="{StaticResource application--pencil}"
+                                        ImageHeight="16"
+                                        ImageWidth="16"
+                                        KeyContent="Actualizar varios . . ." />
+                                    <ui:ImageButton
+                                        Margin="{StaticResource T-R5}"
+                                        Image="{StaticResource application_form_edit}"
+                                        ImageHeight="16"
+                                        ImageWidth="16"
+                                        KeyContent="Modificar . . ." />
+                                    <ui:ImageButton
+                                        Image="{StaticResource document-excel}"
+                                        ImageHeight="16"
+                                        ImageWidth="16"
+                                        KeyContent="Exportar" />
+                                </DockPanel>
+                            </DockPanel>
+                        </Border>
+                    </Border>
+
+                    <DataGrid
+                        Grid.Row="1"
+                        Background="{StaticResource White}"
+                        ColumnHeaderStyle="{StaticResource DataGridColumnHeaderBasic}">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="300" Header="Código de barras" />
+                            <DataGridTextColumn Width="400" Header="Descripción" />
+                            <DataGridTextColumn Width="100" Header="Precio" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+
+</UserControl>

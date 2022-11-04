@@ -1,0 +1,141 @@
+﻿<UserControl
+    x:Class="Multicket.Module.Views.Facturas"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Data="clr-namespace:Multicket.Data;assembly=Data"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:ui="clr-namespace:Multicket.Module.Components"
+    d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}"
+    d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+
+    <Grid Background="{StaticResource WindowBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="0"
+            Margin="{StaticResource T-T1}"
+            Background="{StaticResource LinearGradientIndigo}">
+
+            <TextBlock
+                Margin="{StaticResource T-LR4}"
+                VerticalAlignment="Center"
+                FontFamily="{StaticResource CenturyGothic}"
+                FontSize="17"
+                FontWeight="Bold"
+                Foreground="{StaticResource White}"
+                Text="FACTURAS" />
+        </Border>
+
+        <Border
+            Grid.Row="1"
+            Margin="{StaticResource T-LR2}"
+            Panel.ZIndex="3"
+            BorderBrush="{StaticResource DarkBorderBrush}"
+            BorderThickness="{StaticResource T-LRB1}"
+            Effect="{StaticResource Shadow4}">
+
+            <Border
+                Background="{StaticResource LinearGradientWhiteSmoke}"
+                BorderBrush="{StaticResource White}"
+                BorderThickness="{StaticResource T-T1}">
+
+                <StackPanel Height="30" Orientation="Horizontal">
+                    <ui:ImageButton
+                        Margin="{StaticResource T-L5}"
+                        Content="Agregar"
+                        FontFamily="{StaticResource CenturyGothic}"
+                        Image="{StaticResource add}"
+                        ImageHeight="16"
+                        ImageWidth="16" />
+                    <ui:ImageButton
+                        Margin="{StaticResource T-L5}"
+                        Content="Ajustes"
+                        FontFamily="{StaticResource CenturyGothic}"
+                        Image="{StaticResource pencil}"
+                        ImageHeight="16"
+                        ImageWidth="16" />
+                    <ui:ImageButton
+                        Margin="{StaticResource T-L5}"
+                        Content="Productos bajos en Inventario"
+                        FontFamily="{StaticResource CenturyGothic}"
+                        Image="{StaticResource page_white_put}"
+                        ImageHeight="16"
+                        ImageWidth="16" />
+                    <ui:ImageButton
+                        Margin="{StaticResource T-L5}"
+                        Content="Reporte de Inventario"
+                        FontFamily="{StaticResource CenturyGothic}"
+                        Image="{StaticResource database_table}"
+                        ImageHeight="16"
+                        ImageWidth="16" />
+                    <ui:ImageButton
+                        Margin="{StaticResource T-L5}"
+                        Content="Reporte de Movimientos"
+                        FontFamily="{StaticResource CenturyGothic}"
+                        Image="{StaticResource book_open}"
+                        ImageHeight="16"
+                        ImageWidth="16" />
+                    <ui:ImageButton
+                        Margin="{StaticResource T-L5}"
+                        Content="Kardex de inventario"
+                        FontFamily="{StaticResource CenturyGothic}"
+                        Image="{StaticResource document-excel}"
+                        ImageHeight="16"
+                        ImageWidth="16" />
+                </StackPanel>
+            </Border>
+
+        </Border>
+
+        <DataGrid
+            Grid.Row="2"
+            Margin="100"
+            AlternatingRowBackground="LightGray"
+            AutoGenerateColumns="True"
+            AutomationProperties.IsColumnHeader="True"
+            AutomationProperties.IsOffscreenBehavior="Onscreen"
+            AutomationProperties.IsRequiredForForm="True"
+            AutomationProperties.IsRowHeader="True"
+            EnableColumnVirtualization="True"
+            GridLinesVisibility="None"
+            HeadersVisibility="Column"
+            IsManipulationEnabled="True"
+            IsSynchronizedWithCurrentItem="True"
+            IsTabStop="True"
+            IsTextSearchCaseSensitive="True"
+            IsTextSearchEnabled="True"
+            RowDetailsVisibilityMode="Visible"
+            SelectionMode="Single"
+            SelectionUnit="CellOrRowHeader">
+            <DataGrid.ItemsSource>
+                <Data:CTCreditos />
+            </DataGrid.ItemsSource>
+            <DataGrid.Style>
+                <Style />
+            </DataGrid.Style>
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="dataGridTextColumn" Header="Nombre" />
+                <DataGridTextColumn Header="Apellidos" />
+                <DataGridTextColumn Header="Direccion" />
+            </DataGrid.Columns>
+
+
+
+
+
+
+        </DataGrid>
+
+    </Grid>
+
+</UserControl>

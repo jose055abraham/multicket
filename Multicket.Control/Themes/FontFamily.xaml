@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <FontFamily x:Key="CenturyGothic">pack://application:,,,/Control;component/Resources/Font/Oxygen-Regular.ttf#Oxygen</FontFamily>
+    <FontFamily x:Key="CourierPrimeRegular">pack://application:,,,/Control;component/Resources/Font/CourierPrime-Regular.ttf#Courier Prime</FontFamily>
+    <FontFamily x:Key="ChakraPetch">pack://application:,,,/Control;component/Resources/Font/ChakraPetch-Regular.ttf#Chakra Petch</FontFamily>
+    <FontFamily x:Key="Electrolize">pack://application:,,,/Control;component/Resources/Font/Electrolize-Regular.ttf#Electrolize</FontFamily>
+    <FontFamily x:Key="KameronRegular">pack://application:,,,/Control;component/Resources/Font/Kameron-Regular.ttf#Kameron</FontFamily>
+    <FontFamily x:Key="KameronBold">pack://application:,,,/Control;component/Resources/Font/Kameron-Bold.ttf#Kameron wght 700</FontFamily>
+    <FontFamily x:Key="MontserratBold">pack://application:,,,/Control;component/Resources/Font/Montserrat-Bold.ttf#Montserrat wght 700</FontFamily>
+    <FontFamily x:Key="MontserratRegular">pack://application:,,,/Control;component/Resources/Font/Montserrat-Regular.ttf#Montserrat</FontFamily>
+    <FontFamily x:Key="GlegooBold">pack://application:,,,/Control;component/Resources/Font/Glegoo-Bold.ttf#Glegoo wght 700</FontFamily>
+    <FontFamily x:Key="GlegooRegular">pack://application:,,,/Control;component/Resources/Font/Montserrat-Regular.ttf#Glegoo</FontFamily>
+    <!--<FontFamily x:Key="Arial">pack://application:,,,/Control;component/Resources/Font/Arial.ttf#Arial</FontFamily>-->
+
+</ResourceDictionary>

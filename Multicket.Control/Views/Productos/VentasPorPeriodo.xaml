@@ -1,0 +1,145 @@
+﻿<UserControl
+    x:Class="Multicket.Module.Views.VentasPorPeriodo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:ui="clr-namespace:Multicket.Module.Components"
+    d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}"
+    d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource WindowBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="0"
+            Margin="{StaticResource T-L10}"
+            VerticalAlignment="Bottom">
+
+            <Label
+                Content="REPORTE DE PRODUCTOS VENDIDOS"
+                FontSize="19"
+                FontWeight="Bold"
+                Foreground="{StaticResource Yellow}" />
+        </Border>
+
+        <Border
+            Grid.Row="1"
+            Margin="{StaticResource T-LR5}"
+            BorderBrush="{StaticResource DarkBorderBrush}"
+            BorderThickness="{StaticResource T-LRB1}">
+
+            <Border Background="{StaticResource LightBrush}">
+
+                <DockPanel Margin="{StaticResource T-R5}">
+
+                    <DockPanel Margin="{StaticResource T-LR10}" DockPanel.Dock="Left">
+                        <Label
+                            Height="24"
+                            HorizontalAlignment="Center"
+                            Content="Mostrar ventas de"
+                            DockPanel.Dock="Top" />
+
+                        <ComboBox
+                            Width="150"
+                            Height="25"
+                            Margin="{StaticResource T-LRB10}" />
+                    </DockPanel>
+
+                    <DockPanel HorizontalAlignment="Right" DockPanel.Dock="Right">
+
+                        <ui:ImageButton
+                            Height="32"
+                            Margin="{StaticResource T-T6}"
+                            Content="Exportar"
+                            Image="{StaticResource document-excel}"
+                            ImageHeight="16"
+                            ImageWidth="16" />
+
+                        <ui:ImageButton
+                            Height="32"
+                            Margin="{StaticResource T-LT5}"
+                            Content="Imprimir"
+                            Image="{StaticResource printer}"
+                            ImageHeight="16"
+                            ImageWidth="16" />
+                    </DockPanel>
+                </DockPanel>
+            </Border>
+        </Border>
+
+        <Grid Grid.Row="2" Margin="{StaticResource T-LR5}">
+            <DataGrid
+                Background="{StaticResource White}"
+                BorderBrush="{StaticResource DarkBorderBrush}"
+                BorderThickness="{StaticResource T-LB1}"
+                ColumnHeaderStyle="{StaticResource DataGridColumnHeaderBasic}"
+                ItemsSource="{Binding ventas}">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Width="100"
+                        Binding="{Binding}"
+                        Header="Codigo" />
+                    <DataGridTextColumn
+                        Width="250"
+                        Binding="{Binding}"
+                        Header="Descripción del Producto" />
+                    <DataGridTextColumn
+                        Width="100"
+                        Binding="{Binding}"
+                        Header="Cantidad" />
+                    <DataGridTextColumn
+                        Width="100"
+                        Binding="{Binding}"
+                        Header="Precio Venta" />
+                    <DataGridTextColumn
+                        Width="200"
+                        Binding="{Binding}"
+                        Header="Departamento" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding}"
+                        Header="" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Border
+            Grid.Row="3"
+            Margin="{StaticResource T-LR5}"
+            Background="{StaticResource BackgroudLightColor}"
+            BorderBrush="{StaticResource DarkBorderBrush}"
+            BorderThickness="{StaticResource T-L1}">
+
+            <DockPanel
+                Margin="{StaticResource T-LR5}"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center">
+
+                <Label
+                    Margin="{StaticResource T-R20}"
+                    Content="Total Vendido:"
+                    FontFamily="{StaticResource MontserratRegular}"
+                    FontSize="15" />
+                <Label
+                    Width="150"
+                    HorizontalContentAlignment="Right"
+                    VerticalContentAlignment="Center"
+                    Content="$1000.00"
+                    FontFamily="{StaticResource CourierPrimeRegular}"
+                    FontSize="15"
+                    Foreground="{StaticResource Green}" />
+            </DockPanel>
+        </Border>
+    </Grid>
+
+</UserControl>

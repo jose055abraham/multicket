@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="Multicket.Module.Views.Warning"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:prism="http://prismlibrary.com/"
+             mc:Ignorable="d"
+             Height="140" Width="270">
+
+
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterScreen" />
+            <Setter Property="WindowStyle" Value="SingleBorderWindow" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="UseLayoutRounding" Value="True" />
+            <Setter Property="ResizeMode" Value="NoResize" />
+            <Setter Property="ShowInTaskbar" Value="False" />
+            <Setter Property="SizeToContent" Value="WidthAndHeight" />
+        </Style>
+    </prism:Dialog.WindowStyle>
+
+    <Grid Background="{StaticResource White}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Image 
+            Grid.Column="0" 
+            Grid.Row="0" 
+            Source="{StaticResource error}" 
+            Width="32" 
+            Height="32" 
+            VerticalAlignment="Top"/>
+
+        <Label Content="{Binding Caption, FallbackValue='Warning'}" FontSize="15" VerticalAlignment="Center" FontWeight="Bold" Grid.Column="1" Grid.Row="0"/>
+
+        <TextBlock 
+            Margin="{StaticResource T-LR10}"
+            Text="{Binding Message, FallbackValue='Contenido del mensaje, ejemplo de advertencia'}"
+            TextWrapping="Wrap"
+            HorizontalAlignment="Center"
+            Grid.ColumnSpan="3"
+            Grid.Column="0"
+            Grid.Row="1"/>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" >
+            <Button 
+                Padding="5,5"
+                Style="{x:Null}"
+                Content="Aceptar" 
+                Command="{Binding AceptarCancelarCommand}" 
+                CommandParameter="true"
+                Height="28" 
+                Margin="{StaticResource T-LR5}"/>
+            <Button 
+                Padding="5,5"
+                Style="{x:Null}"
+                Content="Cancelar" 
+                Command="{Binding AceptarCancelarCommand}" 
+                CommandParameter="false"
+                Height="28" 
+                Margin="{StaticResource T-LR5}"/>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

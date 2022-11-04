@@ -1,0 +1,122 @@
+﻿<UserControl
+    x:Class="Multicket.Module.Views.ProductosVarios"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:ui="clr-namespace:Multicket.Module.Components"
+    d:DesignHeight="135"
+    d:DesignWidth="490"
+    mc:Ignorable="d">
+
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterScreen" />
+            <Setter Property="WindowStyle" Value="ToolWindow" />
+            <Setter Property="UseLayoutRounding" Value="True" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="ResizeMode" Value="NoResize" />
+            <Setter Property="Width" Value="485" />
+            <Setter Property="Height" Value="135" />
+            <Setter Property="ShowInTaskbar" Value="False" />
+            <Setter Property="SizeToContent" Value="WidthAndHeight" />
+        </Style>
+    </prism:Dialog.WindowStyle>
+
+    <Grid Background="{StaticResource White}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="330" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="155" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
+
+
+        <Border Grid.Row="0" Background="{StaticResource LinearGradientAquaDark}">
+
+            <TextBlock
+                Margin="{StaticResource T-LR4}"
+                VerticalAlignment="Center"
+                FontFamily="{StaticResource CenturyGothic}"
+                FontSize="17"
+                FontWeight="Bold"
+                Foreground="{StaticResource White}"
+                Text="NUMERO DE PRODUCTOS" />
+        </Border>
+
+        <Label
+            Grid.Row="1"
+            Margin="{StaticResource T-LR10}"
+            VerticalContentAlignment="Center"
+            Content="Código del Producto:" />
+
+        <StackPanel
+            Grid.Row="2"
+            Margin="{StaticResource T-LR10}"
+            Orientation="Horizontal">
+
+            <Button
+                Width="16"
+                Height="16"
+                Margin="0,0,-25,0"
+                Style="{StaticResource BarCode}" />
+
+            <TextBox Width="310" ui:Focus.IsFocused="True" />
+        </StackPanel>
+
+        <Label
+            Grid.Row="3"
+            Margin="{StaticResource T-LR10}"
+            VerticalContentAlignment="Center"
+            Content="Cantidad:" />
+
+
+        <ui:SpinControl
+            Grid.Row="4"
+            Width="100"
+            Height="22"
+            Margin="{StaticResource T-LR10}"
+            HorizontalAlignment="Left">
+            <TextBox Width="100" />
+        </ui:SpinControl>
+
+        <Border
+            Grid.RowSpan="5"
+            Grid.Column="1"
+            Background="#0F7075" />
+        <Border
+            Grid.RowSpan="5"
+            Grid.Column="2"
+            Background="#BBD6D8" />
+
+        <ui:ImageButton
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="2"
+            Height="33"
+            Margin="{StaticResource T-LR10}"
+            Image="{StaticResource tick}"
+            ImageHeight="16"
+            ImageWidth="16"
+            KeyContent="Guardar" />
+
+        <ui:ImageButton
+            Grid.Row="2"
+            Grid.RowSpan="2"
+            Grid.Column="2"
+            Height="33"
+            Margin="{StaticResource T-LR10}"
+            Image="{StaticResource bullet_cross}"
+            ImageHeight="16"
+            ImageWidth="16"
+            KeyContent="Cancelar" />
+
+    </Grid>
+</UserControl>

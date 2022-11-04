@@ -1,0 +1,78 @@
+﻿<UserControl
+    x:Class="Multicket.Module.Views.ModificarProducto"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:ui="clr-namespace:Multicket.Module.Components"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+    <Border
+        Width="400"
+        Height="310"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Background="{DynamicResource VerticalLightBrush}"
+        BorderBrush="{StaticResource DarkBorderBrush}"
+        BorderThickness="{StaticResource T-RB1}">
+
+        <Grid Margin="{StaticResource T-LR20}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32" />
+                <RowDefinition Height="23" />
+                <RowDefinition Height="23" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="45" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Content="Modificar Producto"
+                FontSize="20"
+                FontWeight="DemiBold" />
+
+            <Label
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Teclee Nùmero o el Nombre del Producto:"
+                FontSize="12" />
+
+            <TextBox Grid.Row="2" ui:Focus.IsFocused="True" />
+
+            <ListView
+                Grid.Row="3"
+                BorderThickness="{StaticResource T-LRB1}"
+                ItemTemplate="{DynamicResource MPTemplate}"
+                ItemsSource="{Binding ProductoItems}"
+                SelectedItem="{Binding SelectedProductoItem}">
+
+                <ListView.Resources>
+                    <DataTemplate x:Key="MPTemplate">
+                        <Label
+                            Grid.Column="0"
+                            Content="{Binding Descripcion}"
+                            FontFamily="{StaticResource CourierPrimeRegular}"
+                            FontSize="14" />
+                    </DataTemplate>
+                </ListView.Resources>
+            </ListView>
+
+            <ui:ImageButton
+                Grid.Row="4"
+                Height="29"
+                Command="{Binding AceptarCommand}"
+                KeyContent="Aceptar"
+                Image="{StaticResource tick}"
+                ImageHeight="16"
+                ImageWidth="16" />
+        </Grid>
+    </Border>
+
+</UserControl>

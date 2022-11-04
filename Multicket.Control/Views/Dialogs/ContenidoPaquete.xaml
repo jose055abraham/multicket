@@ -1,0 +1,156 @@
+﻿<UserControl
+    x:Class="Multicket.Module.Views.ContenidoPaquete"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:ui="clr-namespace:Multicket.Module.Components"
+    Name="Paquete"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterScreen" />
+            <Setter Property="UseLayoutRounding" Value="True" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="ResizeMode" Value="NoResize" />
+            <Setter Property="Width" Value="600" />
+            <Setter Property="Height" Value="450" />
+            <Setter Property="ShowInTaskbar" Value="False" />
+        </Style>
+    </prism:Dialog.WindowStyle>
+
+    <Grid Background="{StaticResource White}">
+        <Grid.Resources>
+            <DataTemplate x:Key="HeaderTemplate">
+                <Grid>
+                    <Canvas Background="Beige" />
+                    <Label Content="{Binding Codigo}" />
+                </Grid>
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="33" />
+            <RowDefinition Height="33" />
+            <RowDefinition Height="33" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="200" />
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Row="0"
+            Grid.ColumnSpan="3"
+            VerticalContentAlignment="Center"
+            Content="Ingrese el codigo y la cantidad de cada articulo que incluye este producto"
+            FontFamily="{StaticResource CourierPrimeRegular}"
+            FontSize="13"
+            Foreground="Gray" />
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="{StaticResource T-LR2}"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Content="Código de Barras" />
+
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="{Binding Descripcion}"
+            FontFamily="{StaticResource CourierPrimeRegular}" />
+
+
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Content="{Binding PrecioVenta}"
+            FontFamily="{StaticResource CourierPrimeRegular}" />
+
+        <Label
+            Grid.Row="3"
+            Grid.Column="0"
+            Margin="{StaticResource T-LR2}"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Content="Cantidad" />
+
+        <TextBox
+            Text="{Binding Codigo}"
+            Grid.Row="1"
+            Grid.Column="1"
+            Width="250"
+            HorizontalAlignment="Left" >
+
+            <i:Interaction.Triggers>
+                <i:KeyTrigger Key="Enter">
+                    <i:InvokeCommandAction Command="{Binding BuscarCommand}" PassEventArgsToCommand="True"/>
+                </i:KeyTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+        
+        <TextBox
+            Text="{Binding Cantidad}"
+            Grid.Row="3"
+            Grid.Column="1"
+            HorizontalAlignment="Left" />
+        <ui:ImageButton
+            Command="{Binding AgregarCommand}"
+            Grid.Row="4"
+            Grid.Column="1"
+            Width="120"
+            Margin="{StaticResource T-TB5}"
+            HorizontalAlignment="Left"
+            Content="Agregar"
+            Image="{StaticResource add}"
+            ImageHeight="16"
+            ImageWidth="16" />
+
+        <ui:ImageButton
+            Grid.Row="4"
+            Grid.Column="1"
+            Height="30"
+            Margin="{StaticResource T-TB5}"
+            HorizontalAlignment="Right"
+            Content="Remover seleccionado"
+            Image="{StaticResource bin-full}"
+            ImageHeight="16"
+            ImageWidth="16" />
+
+
+
+        <DataGrid
+            Grid.Row="5"
+            Grid.Column="1"
+            ColumnHeaderStyle="{StaticResource DataGridColumnHeaderBasic}"
+            ItemsSource="{Binding PaqueteItems}"
+            RowHeaderStyle="{StaticResource DataGridRowHeaderBasic}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Codigo}"
+                    Header="Producto" />
+                <DataGridTextColumn
+                    Width="80"
+                    Binding="{Binding Cantidad}"
+                    Header="Cantidad" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

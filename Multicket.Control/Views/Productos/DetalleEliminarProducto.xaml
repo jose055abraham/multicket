@@ -1,0 +1,160 @@
+﻿<UserControl
+    x:Class="Multicket.Module.Views.DetalleEliminarProducto"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:ui="clr-namespace:Multicket.Module.Components"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+    <Border Background="{StaticResource WindowBackgroundBrush}">
+        <Grid Margin="{StaticResource T-L10}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel
+                Grid.Row="0"
+                Margin="{StaticResource T-L10}"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+
+                <TextBlock
+                    FontSize="19"
+                    FontWeight="Bold"
+                    Foreground="#E4A900"
+                    Text="ELIMINAR PRODUCTO" />
+            </StackPanel>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="355" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Height="33"
+                    HorizontalContentAlignment="Right"
+                    VerticalContentAlignment="Center"
+                    Content="Código:" />
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Height="33"
+                    HorizontalContentAlignment="Right"
+                    VerticalContentAlignment="Center"
+                    Content="Descripción:" />
+
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Height="33"
+                    HorizontalContentAlignment="Right"
+                    VerticalContentAlignment="Center"
+                    Content="Se vende:" />
+
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Height="33"
+                    HorizontalContentAlignment="Right"
+                    VerticalContentAlignment="Center"
+                    Content="Precio Costo:" />
+
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Height="33"
+                    HorizontalContentAlignment="Right"
+                    VerticalContentAlignment="Center"
+                    Content="Precio Venta:" />
+
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Height="33"
+                    HorizontalContentAlignment="Right"
+                    VerticalContentAlignment="Center"
+                    Content="Departamento:" />
+
+
+                <TextBox
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Width="250"
+                    Margin="{StaticResource T-LTRB2}"
+                    HorizontalAlignment="Left"
+                    IsEnabled="False"
+                    Style="{StaticResource TextBoxYellow}" />
+                <TextBox
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Width="350"
+                    Margin="{StaticResource T-LTRB2}"
+                    HorizontalAlignment="Left"
+                    IsEnabled="False"
+                    Style="{StaticResource TextBoxYellow}" />
+                <TextBox
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Width="150"
+                    Margin="{StaticResource T-LTRB2}"
+                    HorizontalAlignment="Left"
+                    IsEnabled="False"
+                    Style="{StaticResource TextBoxYellow}" />
+                <TextBox
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Width="100"
+                    Margin="{StaticResource T-LTRB2}"
+                    HorizontalAlignment="Left"
+                    IsEnabled="False"
+                    Style="{StaticResource TextBoxYellow}" />
+                <TextBox
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Width="100"
+                    Margin="{StaticResource T-LTRB2}"
+                    HorizontalAlignment="Left"
+                    IsEnabled="False"
+                    Style="{StaticResource TextBoxYellow}" />
+                <TextBox
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Width="250"
+                    Margin="{StaticResource T-LTRB2}"
+                    HorizontalAlignment="Left"
+                    IsEnabled="False"
+                    Style="{StaticResource TextBoxYellow}" />
+
+                <ui:ImageButton
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    Width="250"
+                    Height="33"
+                    Margin="{StaticResource T-LTRB2}"
+                    HorizontalAlignment="Left"
+                    Content="Eliminar este Producto" />
+            </Grid>
+        </Grid>
+    </Border>
+
+</UserControl>

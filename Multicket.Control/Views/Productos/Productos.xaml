@@ -1,0 +1,133 @@
+﻿<UserControl
+    x:Class="Multicket.Module.Views.Productos"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:ui="clr-namespace:Multicket.Module.Components"
+    d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}"
+    d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    Style="{StaticResource Control}"
+    mc:Ignorable="d">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" PassEventArgsToCommand="True" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Background="{StaticResource WindowBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="0"
+            Margin="{StaticResource T-T1}"
+            Background="{StaticResource LinearGradientYellowClasic}">
+
+            <TextBlock
+                Margin="{StaticResource T-LR4}"
+                VerticalAlignment="Center"
+                FontFamily="{StaticResource CenturyGothic}"
+                FontSize="17"
+                FontWeight="Bold"
+                Foreground="{StaticResource White}"
+                Text="PRODUCTOS" />
+        </Border>
+
+        <Border
+            Grid.Row="1"
+            Margin="{StaticResource T-LR2}"
+            Panel.ZIndex="3"
+            BorderBrush="{StaticResource DarkBorderBrush}"
+            BorderThickness="{StaticResource T-LRB1}"
+            Effect="{StaticResource Shadow4}">
+
+            <Border
+                Background="{StaticResource LinearGradientWhiteSmoke}"
+                BorderBrush="{StaticResource White}"
+                BorderThickness="{StaticResource T-T1}">
+
+
+                <StackPanel Height="30" Orientation="Horizontal">
+                    <ui:ImageButton
+                        Margin="{StaticResource T-L5}"
+                        Command="{Binding NuevoProductoCommand}"
+                        Content="Nuevo"
+                        FontFamily="{StaticResource CenturyGothic}"
+                        Image="{StaticResource page_copy}"
+                        ImageHeight="16"
+                        ImageWidth="16" />
+                    <ui:ImageButton
+                        Margin="{StaticResource T-L5}"
+                        Command="{Binding ModificarProductoCommand}"
+                        Content="Modificar"
+                        FontFamily="{StaticResource CenturyGothic}"
+                        Image="{StaticResource application_form_edit}"
+                        ImageHeight="16"
+                        ImageWidth="16" />
+                    <ui:ImageButton
+                        Margin="{StaticResource T-L5}"
+                        Command="{Binding EliminarProductoCommand}"
+                        Content="Eliminar"
+                        FontFamily="{StaticResource CenturyGothic}"
+                        Image="{StaticResource bin-full}"
+                        ImageHeight="16"
+                        ImageWidth="16" />
+                    <ui:ImageButton
+                        Margin="{StaticResource T-L5}"
+                        Command="{Binding DepartamentosCommand}"
+                        Content="Departamentos"
+                        FontFamily="{StaticResource CenturyGothic}"
+                        Image="{StaticResource application_view_tile}"
+                        ImageHeight="16"
+                        ImageWidth="16" />
+                    <ui:ImageButton
+                        Margin="{StaticResource T-L5}"
+                        Command="{Binding VentasPorPeriodoCommand}"
+                        Content="Ventas por Periodo"
+                        FontFamily="{StaticResource CenturyGothic}"
+                        Image="{StaticResource date_next}"
+                        ImageHeight="16"
+                        ImageWidth="16" />
+                    <ui:ImageButton
+                        Margin="{StaticResource T-L5}"
+                        Command="{Binding PromocionesCommand}"
+                        Content="Promociones"
+                        FontFamily="{StaticResource CenturyGothic}"
+                        Image="{StaticResource star}"
+                        ImageHeight="16"
+                        ImageWidth="16" />
+                    <ui:ImageButton
+                        Margin="{StaticResource T-L5}"
+                        Content="Importar"
+                        FontFamily="{StaticResource CenturyGothic}"
+                        Image="{StaticResource package_go}"
+                        ImageHeight="16"
+                        ImageWidth="16" />
+                    <ui:ImageButton
+                        Margin="{StaticResource T-L5}"
+                        Command="{Binding CatalogoCommand}"
+                        Content="Catalogo"
+                        FontFamily="{StaticResource CenturyGothic}"
+                        Image="{StaticResource application-icon}"
+                        ImageHeight="16"
+                        ImageWidth="16" />
+
+                </StackPanel>
+            </Border>
+
+        </Border>
+
+        <Border Grid.Row="2">
+            <ContentControl prism:RegionManager.RegionName="Productos" />
+        </Border>
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,644 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{284C3EB6-8D67-456C-B484-C4AC9E46075D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Multicket.Control</RootNamespace>
+    <AssemblyName>Control</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\NHibernate-5.3.10-bin\Required_Bins\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.4\lib\net461\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.5.3.12\lib\net461\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Validator, Version=5.1.0.0, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.Validator.5.1.0\lib\net461\NHibernate.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Validator.Specific, Version=5.1.0.0, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.Validator.5.1.0\lib\net461\NHibernate.Validator.Specific.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.8.1.97\lib\net47\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Wpf, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.8.1.97\lib\net47\Prism.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq.EagerFetching, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.EagerFetching.2.2.0\lib\net45\Remotion.Linq.EagerFetching.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\AppCommands.cs" />
+    <Compile Include="Commands\ButtonBaseClickCommandBehavior.cs" />
+    <Compile Include="Commands\CommandBehaviorBase.cs" />
+    <Compile Include="Commands\IApplicationCommands.cs" />
+    <Compile Include="Commands\IInteractionRequest.cs" />
+    <Compile Include="Commands\InteractionRequest.cs" />
+    <Compile Include="Commands\InteractionRequestedEventArgs.cs" />
+    <Compile Include="Commands\SystemCommand.cs" />
+    <Compile Include="Components\Bitmap.cs" />
+    <Compile Include="Components\Button\ImageButton.xaml.cs">
+      <DependentUpon>ImageButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ComboBox\FilteredComboBox.cs" />
+    <Compile Include="Components\Common\Click.cs" />
+    <Compile Include="Components\Common\KeyUpCommand.cs" />
+    <Compile Include="Components\Focus.cs" />
+    <Compile Include="Components\GroupButton\GroupButton.xaml.cs">
+      <DependentUpon>GroupButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\KeyboardBehavior.cs" />
+    <Compile Include="Components\Password\Password.cs" />
+    <Compile Include="Components\PSpin\PSpinControl.xaml.cs">
+      <DependentUpon>PSpinControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\PSpin\ReflectionMath.cs" />
+    <Compile Include="Components\PSpin\SpinControl.xaml.cs">
+      <DependentUpon>SpinControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control.cs" />
+    <Compile Include="Convert\NumberFormat.cs" />
+    <Compile Include="Convert\ToUpperCace.cs" />
+    <Compile Include="Convert\VisibilityConvertor.cs" />
+    <Compile Include="Mvvm\EventArgs.cs" />
+    <Compile Include="Mvvm\EventRaiser.cs" />
+    <Compile Include="Mvvm\RelayCommand.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CrossSettings.cs" />
+    <Compile Include="Services\IManagerService.cs" />
+    <Compile Include="Services\ISessionStorage.cs" />
+    <Compile Include="Services\ISettings.cs" />
+    <Compile Include="Services\ManagerService.cs" />
+    <Compile Include="Services\SessionStorage.cs" />
+    <Compile Include="Services\SettingsImplementation.cs" />
+    <Compile Include="ViewModels\Clientes\CreditosViewModel.cs" />
+    <Compile Include="ViewModels\Clientes\DetalleEliminarClienteViewModel.cs" />
+    <Compile Include="ViewModels\Clientes\EliminarClienteViewModel.cs" />
+    <Compile Include="ViewModels\Clientes\EstadoCuentaClienteViewModel.cs" />
+    <Compile Include="ViewModels\Clientes\EstadoCuentaViewModel.cs" />
+    <Compile Include="ViewModels\Clientes\ModificarClienteViewModel.cs" />
+    <Compile Include="ViewModels\Clientes\NuevoClienteViewModel.cs" />
+    <Compile Include="ViewModels\Clientes\NuevoCreditoViewModel.cs" />
+    <Compile Include="ViewModels\Compras\ComprasSugeridasViewModel.cs" />
+    <Compile Include="ViewModels\Compras\ComprasViewModel.cs" />
+    <Compile Include="ViewModels\Compras\HistorialComprasViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\BusquedaProductoViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\EntradasViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\InformationViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\NotificationSuccessViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\NotificationViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\ProductosVariosViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\SalidasViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\VentasDelDiaViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\WarningViewModel.cs" />
+    <Compile Include="ViewModels\Facturas\FacturasViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\InventarioViewModel.cs" />
+    <Compile Include="ViewModels\Login\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Main\MainContentViewModel.cs" />
+    <Compile Include="ViewModels\Productos\CatalogoViewModel.cs" />
+    <Compile Include="ViewModels\Productos\ContenidoPaqueteViewModel.cs" />
+    <Compile Include="ViewModels\Productos\DepartamentosViewModel.cs" />
+    <Compile Include="ViewModels\Productos\DetalleEliminarProductoViewModel.cs" />
+    <Compile Include="ViewModels\Productos\EliminarProductoViewModel.cs" />
+    <Compile Include="ViewModels\Productos\ModificarProductoViewModel.cs" />
+    <Compile Include="ViewModels\Productos\NuevoProductoViewModel.cs" />
+    <Compile Include="ViewModels\Productos\TabControlProductoViewModel.cs" />
+    <Compile Include="ViewModels\Productos\ProductosViewModel.cs" />
+    <Compile Include="ViewModels\Productos\PromocionesViewModel.cs" />
+    <Compile Include="ViewModels\Productos\VentasPorPeriodoViewModel.cs" />
+    <Compile Include="ViewModels\Ventas\VentasViewModel.cs" />
+    <Compile Include="Views\Clientes\Creditos.xaml.cs">
+      <DependentUpon>Creditos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clientes\DetalleEliminarCliente.xaml.cs">
+      <DependentUpon>DetalleEliminarCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clientes\EliminarCliente.xaml.cs">
+      <DependentUpon>EliminarCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clientes\EstadoCuenta.xaml.cs">
+      <DependentUpon>EstadoCuenta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clientes\EstadoCuentaCliente.xaml.cs">
+      <DependentUpon>EstadoCuentaCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clientes\ModificarCliente.xaml.cs">
+      <DependentUpon>ModificarCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clientes\NuevoCliente.xaml.cs">
+      <DependentUpon>NuevoCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clientes\NuevoCredito.xaml.cs">
+      <DependentUpon>NuevoCredito.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Compras\Compras.xaml.cs">
+      <DependentUpon>Compras.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Compras\ComprasSugeridas.xaml.cs">
+      <DependentUpon>ComprasSugeridas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Compras\HistorialCompras.xaml.cs">
+      <DependentUpon>HistorialCompras.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\BusquedaProducto.xaml.cs">
+      <DependentUpon>BusquedaProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\Entradas.xaml.cs">
+      <DependentUpon>Entradas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\Information.xaml.cs">
+      <DependentUpon>Information.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\NotificationSuccess.xaml.cs">
+      <DependentUpon>NotificationSuccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ProductosVarios.xaml.cs">
+      <DependentUpon>ProductosVarios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\Salidas.xaml.cs">
+      <DependentUpon>Salidas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\VentasDelDia.xaml.cs">
+      <DependentUpon>VentasDelDia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\Warning.xaml.cs">
+      <DependentUpon>Warning.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Facturas\Facturas.xaml.cs">
+      <DependentUpon>Facturas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Inventario\Inventario.xaml.cs">
+      <DependentUpon>Inventario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Main\MainContent.xaml.cs">
+      <DependentUpon>MainContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productos\Catalogo.xaml.cs">
+      <DependentUpon>Catalogo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\ContenidoPaquete.xaml.cs">
+      <DependentUpon>ContenidoPaquete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productos\Departamentos.xaml.cs">
+      <DependentUpon>Departamentos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productos\DetalleEliminarProducto.xaml.cs">
+      <DependentUpon>DetalleEliminarProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productos\EliminarProducto.xaml.cs">
+      <DependentUpon>EliminarProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productos\ModificarProducto.xaml.cs">
+      <DependentUpon>ModificarProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productos\NuevoProducto.xaml.cs">
+      <DependentUpon>NuevoProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productos\Productos.xaml.cs">
+      <DependentUpon>Productos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productos\Promociones.xaml.cs">
+      <DependentUpon>Promociones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productos\TabControlProducto.xaml.cs">
+      <DependentUpon>TabControlProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Productos\VentasPorPeriodo.xaml.cs">
+      <DependentUpon>VentasPorPeriodo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Ventas\Ventas.xaml.cs">
+      <DependentUpon>Ventas.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Multicket.Data\Multicket.Data.csproj">
+      <Project>{f554a70c-b04d-4f0d-92ee-1e0e2f97f7cf}</Project>
+      <Name>Multicket.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Components\Button\ImageButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Components\GroupButton\GroupButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Components\PSpin\PSpinControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Components\PSpin\SpinControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Border.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ButtonGlass.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\DataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\DefaultButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\FontFamily.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Label.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\PasswordBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\RadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\TabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\TextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\TextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ThemePrimary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Thickness.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Tooltip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\UserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Clientes\Creditos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Clientes\DetalleEliminarCliente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Clientes\EliminarCliente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Clientes\EstadoCuenta.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Clientes\EstadoCuentaCliente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Clientes\ModificarCliente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Clientes\NuevoCliente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Clientes\NuevoCredito.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Compras\Compras.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Compras\ComprasSugeridas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Compras\HistorialCompras.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\BusquedaProducto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\Entradas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\Information.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\NotificationSuccess.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\ProductosVarios.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\Salidas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\VentasDelDia.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\Warning.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Facturas\Facturas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Inventario\Inventario.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Main\MainContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Productos\Catalogo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\ContenidoPaquete.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Productos\Departamentos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Productos\DetalleEliminarProducto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Productos\EliminarProducto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Productos\ModificarProducto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Productos\NuevoProducto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Productos\Productos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Productos\Promociones.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Productos\TabControlProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Productos\VentasPorPeriodo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Ventas\Ventas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <Resource Include="Resources\Font\ChakraPetch-Regular.ttf" />
+    <Resource Include="Resources\Font\CourierPrime-Regular.ttf" />
+    <Resource Include="Resources\Font\Electrolize-Regular.ttf" />
+    <Resource Include="Resources\Font\Glegoo-Bold.ttf" />
+    <Resource Include="Resources\Font\Glegoo-Regular.ttf" />
+    <Resource Include="Resources\Font\Kameron-Bold.ttf" />
+    <Resource Include="Resources\Font\Kameron-Regular.ttf" />
+    <Resource Include="Resources\Font\Montserrat-Bold.ttf" />
+    <Resource Include="Resources\Font\Montserrat-Regular.ttf" />
+    <Resource Include="Resources\Font\Oxygen-Bold.ttf" />
+    <Resource Include="Resources\Font\Oxygen-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\accept.png" />
+    <Resource Include="Resources\Icons\add.png" />
+    <Resource Include="Resources\Icons\application-table.png" />
+    <Resource Include="Resources\Icons\arrow-090.png" />
+    <Resource Include="Resources\Icons\arrow-180.png" />
+    <Resource Include="Resources\Icons\arrow-270.png" />
+    <Resource Include="Resources\Icons\arrow-circle-double.png" />
+    <Resource Include="Resources\Icons\asterisk_orange.png" />
+    <Resource Include="Resources\Icons\asterisk_red.png" />
+    <Resource Include="Resources\Icons\asterisk_yellow.png" />
+    <Resource Include="Resources\Icons\attach.png" />
+    <Resource Include="Resources\Icons\barcode.png" />
+    <Resource Include="Resources\Icons\blue-document--pencil.png" />
+    <Resource Include="Resources\Icons\bullet_arrow_bottom.png" />
+    <Resource Include="Resources\Icons\bullet_cross.png" />
+    <Resource Include="Resources\Icons\bullet_right.png" />
+    <Resource Include="Resources\Icons\calculator_edit.png" />
+    <Resource Include="Resources\Icons\cancel.png" />
+    <Resource Include="Resources\Icons\cart.png" />
+    <Resource Include="Resources\Icons\cart_add.png" />
+    <Resource Include="Resources\Icons\cart_delete.png" />
+    <Resource Include="Resources\Icons\cart_edit.png" />
+    <Resource Include="Resources\Icons\cart_go.png" />
+    <Resource Include="Resources\Icons\cart_magnify.png" />
+    <Resource Include="Resources\Icons\cart_put.png" />
+    <Resource Include="Resources\Icons\cart_remove.png" />
+    <Resource Include="Resources\Icons\chart_bar.png" />
+    <Resource Include="Resources\Icons\cog.png" />
+    <Resource Include="Resources\Icons\credit-cards.png" />
+    <Resource Include="Resources\Icons\cross.png" />
+    <Resource Include="Resources\Icons\decline.png" />
+    <Resource Include="Resources\Icons\delete.png" />
+    <Resource Include="Resources\Icons\document-excel.png" />
+    <Resource Include="Resources\Icons\document-invoice.png" />
+    <Resource Include="Resources\Icons\document-table.png" />
+    <Resource Include="Resources\Icons\documents-text.png" />
+    <Resource Include="Resources\Icons\exclamation.png" />
+    <Resource Include="Resources\Icons\group.png" />
+    <Resource Include="Resources\Icons\group_add.png" />
+    <Resource Include="Resources\Icons\group_delete.png" />
+    <Resource Include="Resources\Icons\group_edit.png" />
+    <Resource Include="Resources\Icons\group_error.png" />
+    <Resource Include="Resources\Icons\group_gear.png" />
+    <Resource Include="Resources\Icons\group_go.png" />
+    <Resource Include="Resources\Icons\group_key.png" />
+    <Resource Include="Resources\Icons\group_link.png" />
+    <Resource Include="Resources\Icons\information.png" />
+    <Resource Include="Resources\Icons\magnifier.png" />
+    <Resource Include="Resources\Icons\money_add.png" />
+    <Resource Include="Resources\Icons\money_delete.png" />
+    <Resource Include="Resources\Icons\money_dollar.png" />
+    <Resource Include="Resources\Icons\page_copy.png" />
+    <Resource Include="Resources\Icons\page_white.png" />
+    <Resource Include="Resources\Icons\printer.png" />
+    <Resource Include="Resources\Icons\receipt-text.png" />
+    <Resource Include="Resources\Icons\star.png" />
+    <Resource Include="Resources\Icons\store.png" />
+    <Resource Include="Resources\Icons\table.png" />
+    <Resource Include="Resources\Icons\table_edit.png" />
+    <Resource Include="Resources\Icons\table_gear.png" />
+    <Resource Include="Resources\Icons\television.png" />
+    <Resource Include="Resources\Icons\tick.png" />
+    <Resource Include="Resources\Icons\truck-box.png" />
+    <Resource Include="Resources\Icons\user_delete.png" />
+    <Resource Include="Resources\Icons\user_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\App\shop.png" />
+    <Resource Include="Resources\Icons\bullet_go.png" />
+    <Resource Include="Resources\Icons\folder_page.png" />
+    <Resource Include="Resources\Icons\folder_page_white.png" />
+    <Resource Include="Resources\Icons\monitor_screen.png" />
+    <Resource Include="Resources\Icons\padlock.png" />
+    <Resource Include="Resources\Icons\trash-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\note.png" />
+    <Resource Include="Resources\Icons\note_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\document-copy.png" />
+    <Resource Include="Resources\Icons\traffic-light-single.png" />
+    <Resource Include="Resources\Icons\arrow_refresh.png" />
+    <Resource Include="Resources\Icons\binocular.png" />
+    <Resource Include="Resources\Icons\blue-document.png" />
+    <Resource Include="Resources\Icons\application-icon.png" />
+    <Resource Include="Resources\Icons\package_go.png" />
+    <Resource Include="Resources\Icons\date_next.png" />
+    <Resource Include="Resources\Icons\bin-full.png" />
+    <Resource Include="Resources\Icons\application_form.png" />
+    <Resource Include="Resources\Icons\application_view_tile.png" />
+    <Resource Include="Resources\Icons\application_form_edit.png" />
+    <Resource Include="Resources\Icons\application--pencil.png" />
+    <Resource Include="Resources\Icons\book_open.png" />
+    <Resource Include="Resources\Icons\database_table.png" />
+    <Resource Include="Resources\Icons\page_white_put.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\error.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

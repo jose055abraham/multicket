@@ -1,0 +1,396 @@
+﻿<UserControl
+    x:Class="Multicket.Module.Views.VentasDelDia"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:ui="clr-namespace:Multicket.Module.Components"
+    d:DesignHeight="650"
+    d:DesignWidth="817"
+    mc:Ignorable="d">
+
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterScreen" />
+            <Setter Property="UseLayoutRounding" Value="True" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="ResizeMode" Value="NoResize" />
+            <Setter Property="Width" Value="817" />
+            <Setter Property="Height" Value="650" />
+            <Setter Property="ShowInTaskbar" Value="False" />
+        </Style>
+    </prism:Dialog.WindowStyle>
+
+    <Grid Background="{StaticResource BackgroudLightColor}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="400" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Background="{StaticResource LinearGradientBlueDark}">
+
+            <TextBlock
+                Margin="{StaticResource T-LR4}"
+                VerticalAlignment="Center"
+                FontFamily="{StaticResource CenturyGothic}"
+                FontSize="17"
+                FontWeight="Bold"
+                Foreground="{StaticResource White}"
+                Text="Ventas del Día" />
+        </Border>
+
+        <Border
+            Grid.Row="1"
+            Grid.Column="0"
+            BorderBrush="{StaticResource DarkBorderBrush}"
+            BorderThickness="{StaticResource T-R1}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Border
+                    Grid.Row="0"
+                    BorderBrush="#F1F4F2"
+                    BorderThickness="{StaticResource T-B2}">
+
+                    <Border
+                        Background="{StaticResource LinearGradientWhiteLite}"
+                        BorderBrush="{StaticResource DarkBorderBrush}"
+                        BorderThickness="{StaticResource T-B1}">
+
+                        <Border BorderBrush="{StaticResource White}" BorderThickness="{StaticResource T-LT1}">
+                            <StackPanel Margin="{StaticResource T-LTRB4}">
+                                <TextBlock Text="Puedes buscar por folio o nombre del ticket:" />
+                                <TextBox
+                                    Height="33"
+                                    Margin="{StaticResource T-TB4}"
+                                    ui:Focus.IsFocused="True" />
+                            </StackPanel>
+                        </Border>
+                    </Border>
+                </Border>
+
+                <DataGrid
+                    Grid.Row="2"
+                    Background="{StaticResource White}"
+                    ColumnHeaderStyle="{StaticResource DataGridColumnHeaderBasic}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="100" Header="Folio" />
+                        <DataGridTextColumn Width="100" Header="Arts" />
+                        <DataGridTextColumn Width="100" Header="Hora" />
+                        <DataGridTextColumn Width="Auto" Header="Total" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Border
+                    Grid.Row="3"
+                    Height="120"
+                    Background="{StaticResource LightBrush}"
+                    BorderBrush="{StaticResource DarkBorderBrush}"
+                    BorderThickness="{StaticResource T-T1}">
+
+                    <Grid Margin="{StaticResource T-T5}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Content="Del Día:" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Content="Cajero:" />
+
+                        <DockPanel
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="{StaticResource T-LTRB4}">
+                            <DatePicker Width="251" Margin="{StaticResource T-R5}" />
+                            <ui:ImageButton
+                                Height="28"
+                                Image="{StaticResource calendar}"
+                                ImageHeight="16"
+                                ImageWidth="16"
+                                KeyContent="Hoy" />
+                        </DockPanel>
+                        <ui:FilteredComboBox
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Height="30"
+                            Margin="{StaticResource T-LTRB3}"
+                            FontFamily="{StaticResource CourierPrimeRegular}"
+                            FontSize="13"
+                            Style="{StaticResource ComboBoxDelDia}">
+
+                            <ComboBoxItem>- Sin Departamento -</ComboBoxItem>
+                        </ui:FilteredComboBox>
+
+                    </Grid>
+
+                </Border>
+
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition />
+                <RowDefinition Height="43" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="-"
+                FontSize="15"
+                FontWeight="Bold" />
+
+            <Border
+                Grid.Row="1"
+                Margin="{StaticResource T-LRB20}"
+                Background="{DynamicResource LightBrush}"
+                CornerRadius="1">
+                <Border.Effect>
+                    <DropShadowEffect
+                        BlurRadius="10"
+                        Direction="294"
+                        Opacity="0.8"
+                        ShadowDepth="3"
+                        Color="#FFAAACAB" />
+                </Border.Effect>
+
+                <Grid Margin="{StaticResource T-LTRB10}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="250" />
+                        <RowDefinition Height="43" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="{StaticResource T-TB2}"
+                            HorizontalAlignment="Right"
+                            Content="Folio:"
+                            FontFamily="{StaticResource CourierPrimeRegular}"
+                            FontSize="14"
+                            FontWeight="SemiBold" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="{StaticResource T-TB2}"
+                            HorizontalAlignment="Right"
+                            Content="Cajero:"
+                            FontFamily="{StaticResource CourierPrimeRegular}"
+                            FontSize="14"
+                            FontWeight="SemiBold" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Margin="{StaticResource T-TB2}"
+                            HorizontalAlignment="Right"
+                            Content="Cliente:"
+                            FontFamily="{StaticResource CourierPrimeRegular}"
+                            FontSize="14"
+                            FontWeight="SemiBold" />
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="{StaticResource T-L4}"
+                            VerticalAlignment="Center"
+                            Content="3"
+                            FontFamily="{StaticResource CourierPrimeRegular}"
+                            FontSize="14" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="{StaticResource T-L4}"
+                            VerticalAlignment="Center"
+                            Content="Administrador de la tinda"
+                            FontFamily="{StaticResource CourierPrimeRegular}"
+                            FontSize="14" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Margin="{StaticResource T-L4}"
+                            VerticalAlignment="Center"
+                            Content="Al Contado"
+                            FontFamily="{StaticResource CourierPrimeRegular}"
+                            FontSize="14" />
+                    </Grid>
+
+                    <Label
+                        Grid.Row="1"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Content="10 de Noviembre de 2020 9:42 pm"
+                        FontFamily="{StaticResource CourierPrimeRegular}"
+                        FontSize="14" />
+
+                    <Border Grid.Row="2">
+                        <DataGrid
+                            AutoGenerateColumns="False"
+                            Background="{StaticResource White}"
+                            CanUserAddRows="False"
+                            ColumnHeaderStyle="{StaticResource DataGridColumnHeaderBasic}"
+                            FontFamily="{StaticResource CourierPrimeRegular}"
+                            ItemsSource="{Binding VentasList}"
+                            RowHeaderWidth="0">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                    Width="60"
+                                    Binding="{Binding Path=Cant}"
+                                    FontFamily="{StaticResource CourierPrimeRegular}"
+                                    Header="Cant." />
+                                <DataGridTextColumn
+                                    Width="160"
+                                    Binding="{Binding Path=Descripcion}"
+                                    FontFamily="{StaticResource CourierPrimeRegular}"
+                                    Header="Descripción" />
+                                <DataGridTextColumn
+                                    Width="80"
+                                    Binding="{Binding Path=Importe}"
+                                    FontFamily="{StaticResource CourierPrimeRegular}"
+                                    Header="Importe" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Border>
+
+                    <ui:ImageButton
+                        Grid.Row="3"
+                        Height="33"
+                        Margin="{StaticResource T-TB3}"
+                        KeyContent="Devolver artículo seleccionado" />
+
+                    <StackPanel Grid.Row="4" Margin="{StaticResource T-T10}">
+                        <DockPanel>
+                            <Label
+                                Content="Total:"
+                                FontFamily="{StaticResource CourierPrimeRegular}"
+                                FontSize="18"
+                                FontWeight="DemiBold" />
+                            <Label
+                                Width="120"
+                                Margin="{StaticResource T-LR10}"
+                                Content="$0.00"
+                                FontFamily="{StaticResource CourierPrimeRegular}"
+                                FontSize="16" />
+                            <ui:ImageButton
+                                Image="{StaticResource note}"
+                                ImageHeight="16"
+                                ImageWidth="16"
+                                KeyContent="Notas del la venta" />
+                        </DockPanel>
+
+                        <DockPanel>
+                            <Label
+                                Content="Total:"
+                                FontFamily="{StaticResource CourierPrimeRegular}"
+                                FontSize="18"
+                                FontWeight="DemiBold" />
+                            <Label
+                                Margin="{StaticResource T-LR10}"
+                                Content="$0.00"
+                                FontFamily="{StaticResource CourierPrimeRegular}"
+                                FontSize="16" />
+                            <Image
+                                Width="16"
+                                Height="16"
+                                HorizontalAlignment="Right"
+                                Source="{StaticResource money}" />
+                        </DockPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <DockPanel Grid.Row="3" Margin="{StaticResource T-LTRB3}">
+                <ui:ImageButton
+                    Height="30"
+                    Margin="{StaticResource T-LR10}"
+                    DockPanel.Dock="Left"
+                    Image="{StaticResource delete}"
+                    ImageHeight="16"
+                    ImageWidth="16"
+                    KeyContent="Cancelar Venta" />
+                <ui:ImageButton
+                    Width="150"
+                    Height="30"
+                    Margin="{StaticResource T-L20}"
+                    DockPanel.Dock="Right"
+                    Image="{StaticResource printer}"
+                    ImageHeight="16"
+                    ImageWidth="16"
+                    KeyContent="Imprimir copia" />
+            </DockPanel>
+        </Grid>
+
+        <Border
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            Background="{StaticResource LightBrush}"
+            BorderBrush="#E8E6E1"
+            BorderThickness="{StaticResource T-TB2}">
+
+            <Border BorderBrush="{StaticResource DarkBorderBrush}" BorderThickness="{StaticResource T-T1}">
+                <StackPanel Margin="{StaticResource T-L10}" Orientation="Horizontal">
+                    <ui:ImageButton
+                        Height="33"
+                        Image="{StaticResource tick}"
+                        ImageHeight="16"
+                        ImageWidth="16"
+                        KeyContent="Cerrar Ventana">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ui:ImageButton>
+                </StackPanel>
+            </Border>
+        </Border>
+    </Grid>
+
+</UserControl>

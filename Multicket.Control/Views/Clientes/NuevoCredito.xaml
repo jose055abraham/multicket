@@ -1,0 +1,209 @@
+﻿<UserControl
+    x:Class="Multicket.Module.Views.NuevoCredito"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:ui="clr-namespace:Multicket.Module.Components"
+    d:DesignHeight="{x:Static SystemParameters.PrimaryScreenHeight}"
+    d:DesignWidth="{x:Static SystemParameters.PrimaryScreenWidth}"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+    <Border Background="{StaticResource WindowBackgroundBrush}">
+        <Grid Margin="{StaticResource T-L10}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel
+                Grid.Row="0"
+                Margin="{StaticResource T-L10}"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+
+                <TextBlock
+                    FontSize="19"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource Green}"
+                    Text="NUEVO CLIENTE A CREDITO" />
+            </StackPanel>
+
+            <Border Grid.Row="1" Margin="0,0,0,4">
+                <Grid Margin="{StaticResource T-LRB10}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="125" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Height="20"
+                        Content="- Llene la siguiente información acerca del Cliente:"
+                        FontSize="13"
+                        Foreground="{StaticResource GreenDark}" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Height="33"
+                        HorizontalContentAlignment="Right"
+                        VerticalContentAlignment="Center"
+                        Content="Nombre Completo"
+                        FontSize="13" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Height="33"
+                        HorizontalContentAlignment="Right"
+                        VerticalContentAlignment="Center"
+                        Content="Dirección"
+                        FontSize="13" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Height="33"
+                        HorizontalContentAlignment="Right"
+                        VerticalContentAlignment="Center"
+                        Content="Teléfono(s)"
+                        FontSize="13" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Height="33"
+                        HorizontalContentAlignment="Right"
+                        VerticalContentAlignment="Center"
+                        Content="Límite de Crédito"
+                        FontSize="13" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Background="Transparent"
+                        Width="400"
+                        Margin="{StaticResource T-LTRB2}"
+                        HorizontalAlignment="Left"
+                        VerticalContentAlignment="Center"                        
+                        FontFamily="{StaticResource CourierPrimeRegular}"
+                        FontSize="14"
+                        Style="{StaticResource TextBoxGreen}"
+                        Text="{Binding Nombre, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" >
+                        
+                        <!--<i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChenged">
+                                <i:InvokeCommandAction Command="{Binding TextChangedCommand}" PassEventArgsToCommand="True" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>-->
+                    </TextBox>
+
+                    <TextBox
+                        x:Name="TextDireccion"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Width="400"
+                        Margin="{StaticResource T-LTRB2}"
+                        HorizontalAlignment="Left"
+                        VerticalContentAlignment="Center"
+                        CharacterCasing="Normal"
+                        FontFamily="{StaticResource CourierPrimeRegular}"
+                        FontSize="14"
+                        Style="{StaticResource TextBoxGreen}"
+                        Text="{Binding Direccion, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+
+                        <!--<i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChenged">
+                                <i:InvokeCommandAction Command="{Binding TextChangedCommand}" PassEventArgsToCommand="True" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>-->
+
+                    </TextBox>
+
+                    <TextBox
+                        x:Name="TextTelefono"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Width="200"
+                        Margin="{StaticResource T-LTRB2}"
+                        HorizontalAlignment="Left"
+                        VerticalContentAlignment="Center"
+                        FontFamily="{StaticResource CourierPrimeRegular}"
+                        FontSize="14"
+                        Style="{StaticResource TextBoxGreen}"
+                        Text="{Binding Telefono, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+
+                        <!--<i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChenged">
+                                <i:InvokeCommandAction Command="{Binding TextChangedCommand}" PassEventArgsToCommand="True" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>-->
+                    </TextBox>
+
+                    <StackPanel
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Orientation="Horizontal">
+                        <TextBox
+                            Width="100"
+                            Margin="{StaticResource T-LTRB2}"
+                            HorizontalAlignment="Left"
+                            VerticalContentAlignment="Center"
+                            FontFamily="{StaticResource CourierPrimeRegular}"
+                            FontSize="14"
+                            Style="{StaticResource TextBoxGreen}"
+                            Text="{Binding LCredito, StringFormat={}{0:C}}">
+
+                            <!--<i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChenged">
+                                    <i:InvokeCommandAction Command="{Binding TextChangedCommand}" PassEventArgsToCommand="True" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>-->
+                        </TextBox>
+
+                        <Label
+                            VerticalContentAlignment="Center"
+                            Content="(Si es cero, no tiene limite de crédito)"
+                            Foreground="#808080" />
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Height="30"
+                        Margin="{StaticResource T-LTRB2}"
+                        Orientation="Horizontal">
+                        <ui:ImageButton
+                            Command="{Binding GuardarCommand}"
+                            Content="Guardar Cliente"
+                            Image="{StaticResource tick}"
+                            ImageHeight="16"
+                            ImageWidth="16" />
+
+                        <ui:ImageButton
+                            Margin="{StaticResource T-L5}"
+                            Command="{Binding CancelarClienteCommand}"
+                            Content="Cancelar"
+                            Image="{StaticResource bullet_cross}"
+                            ImageHeight="16"
+                            ImageWidth="16" />
+
+
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+
+</UserControl>
