@@ -5,6 +5,9 @@ using System;
 
 namespace Multicket.Module.ViewModels
 {
+    /// <summary>
+    /// <para>Parameters { title , message, caption}</para>
+    /// </summary>
     public class WarningViewModel : BindableBase, IDialogAware
     {
         private string _title;
@@ -51,13 +54,13 @@ namespace Multicket.Module.ViewModels
             RequestClose?.Invoke(dialogResult);
         }
 
-        public string Message 
-        { 
+        public string Message
+        {
             get { return _message; }
             set { SetProperty(ref _message, value); }
         }
 
-        public string Title 
+        public string Title
         {
             get { return _title; }
             set { SetProperty(ref _title, value); }

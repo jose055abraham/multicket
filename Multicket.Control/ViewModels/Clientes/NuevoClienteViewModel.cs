@@ -7,7 +7,6 @@ using NHibernate.Validator.Constraints;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
@@ -80,8 +79,7 @@ namespace Multicket.Module.ViewModels
 
         private void OnGuardar(object sender)
         {
-
-            var cliete = new Cliente
+            Cliente cliente = new Cliente
             {
                 Id = ClienteId,
                 Nombre = Nombre,
@@ -92,13 +90,13 @@ namespace Multicket.Module.ViewModels
                 Fill = Fill
             };
 
-            var credito = new Credito
+            Credito credito = new Credito
             {
                 Id = CreditoId,
                 LCredito = LCredito
             };
 
-            var direccion = new Direccion
+            Direccion direccion = new Direccion
             {
                 Id = DireccionId,
                 Domicilio1 = Domicilio1,
@@ -110,16 +108,18 @@ namespace Multicket.Module.ViewModels
                 Nota = Nota,
             };
 
-            cliete.OnVeryfi();
-            cliete.add(credito);
-            cliete.add(direccion);
-            src.data.Save(cliete);
+            cliente.OnVeryfi();
+            cliente.add(credito);
+            cliente.add(direccion);
+            src.data.Save(cliente);
             src.data.Save(credito);
             src.data.Save(direccion);
 
             src.dialog.ShowDialog("NotificationSuccess", new DialogParameters
             {
-                {"message","Registro realizado con exito" }
+                {"caption", "!El usuario o la contraseña son incorrectos!" },
+                {"message","Registro realizado con éxito" },
+                {"title", "No autorizado" }
             }, null);
             OnRefresh();
             OnClear();
@@ -157,7 +157,7 @@ namespace Multicket.Module.ViewModels
                         src.data.Delete(SelectedClienteItem);
                         src.dialog.ShowDialog("NotificationSuccess", new DialogParameters
                         {
-                            {"message","Registro eliminado con exito" }
+                            {"message","Registro eliminado con éxito" }
                         }, null);
                     }
                     OnClear();
@@ -369,7 +369,7 @@ namespace Multicket.Module.ViewModels
         public string CP
         {
             get => _codigop;
-            set => SetProperty(ref _codigop, value); 
+            set => SetProperty(ref _codigop, value);
         }
 
         public string Nota
@@ -432,10 +432,10 @@ namespace Multicket.Module.ViewModels
             set => SetProperty(ref _creditoid, value);
         }
 
-        public ISet<Cliente> ClienteItems 
+        public ISet<Cliente> ClienteItems
         {
             get => _clienteitems;
-            set => SetProperty(ref _clienteitems, value); 
+            set => SetProperty(ref _clienteitems, value);
         }
 
         public int SelectedTipoCreditoIndex

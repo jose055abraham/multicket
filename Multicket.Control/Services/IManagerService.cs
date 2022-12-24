@@ -8,7 +8,6 @@ namespace Multicket.Module.Services
 {
     public interface IManagerService
     {
-
         ISessionStorage session { get; set; }
         IRegionManager region { get; set; }
         IDialogService dialog { get; set; }

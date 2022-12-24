@@ -12,7 +12,7 @@ namespace Multicket.Module.Services
 
         public string Uid => Settings.GetValueOrDefault(MULTICKET, "");
 
-        //public string Usuario => Settings.GetValueOrDefault(USER, "");
+        //public string SelectedUsuarioItem => Settings.GetValueOrDefault(USER, "");
 
         //public DateTime CreatedAt => Settings.GetValueOrDefault(DATE, DateTime.Now);
 

@@ -16,10 +16,10 @@ namespace Multicket.Data.Config
     public sealed class ConfigManager
     {
         private const string host = "localhost";
-        private const int port = 3307;
+        private const int port = 3306;
         private const string data = "nhibernate";
         private const string uid = "root";
-        private const string pwd = "root";
+        private const string pwd = "";
         private const string sslmode = "none";
         private static string url = $"host={host};port={port};database={data};uid={uid};pwd={pwd};sslmode={sslmode};";
 

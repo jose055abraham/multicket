@@ -52,7 +52,7 @@ namespace Multicket.Module.ViewModels
         {
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromSeconds(1);
-            //Usuario = src.Session.Usuario;
+            //SelectedUsuarioItem = src.session.SelectedUsuarioItem;
             _timer.Tick += Tick;
             _timer.Start();
         }

@@ -221,9 +221,9 @@
                                 FontFamily="{StaticResource CourierPrimeRegular}"
                                 IsEditable="False"
                                 FontSize="14"
-                                ItemsSource="{Binding Usuarios}"
+                                ItemsSource="{Binding UsuarioItems}"
                                 DisplayMemberPath="Nombre"
-                                SelectedItem="{Binding Usuario}"
+                                SelectedItem="{Binding SelectedUsuarioItem}"
                                 Style="{StaticResource ComboBoxLogin}" />
                             </StackPanel>
 

@@ -3,8 +3,8 @@ using Multicket.Module.Mvvm;
 using Multicket.Module.Services;
 using Prism.Mvvm;
 using Prism.Regions;
+using Prism.Services.Dialogs;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows;
 
 namespace Multicket.Module.ViewModels
@@ -30,17 +30,22 @@ namespace Multicket.Module.ViewModels
 
         private void OnAceptar(object sender)
         {
+            Nombre = SelectedUsuarioItem.Nombre;
 
+            if (src.data.Verify(Nombre, Password) is null)
+            {
+                src.dialog.ShowDialog("Warning", new DialogParameters
+            {
+                    {"title","Warning" },
+                    {"caption", "Usuario no encontrado" },
+                    {"message" , "!El nombre o contraseña son incorrectos!"},
+            }, null);
 
-            //if (src.Data.Verify(Usuario.Nombre, "12345678") is null)
-            //{
-            //    MessageBox.Show("Nombre o contraseña incorrecta!");
-
-            //}
-            //else
-            //{
+            }
+            else
+            {
                 OnNavigate("Main", "MainContent");
-            //}
+            }
 
         }
 
@@ -52,7 +57,7 @@ namespace Multicket.Module.ViewModels
         private void Initialization()
         {
             UsuarioItems = src.data.Find<Usuario>();
-            Usuario = new Usuario();
+            SelectedUsuarioItem = new Usuario();
 
         }
 
@@ -68,7 +73,7 @@ namespace Multicket.Module.ViewModels
             set => SetProperty(ref _password, value);
         }
 
-        public Usuario Usuario
+        public Usuario SelectedUsuarioItem
         {
             get => _usuario;
             set => SetProperty(ref _usuario, value);

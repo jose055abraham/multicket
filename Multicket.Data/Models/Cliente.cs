@@ -28,13 +28,11 @@ namespace Multicket.Data.Models
 
             set
             {
-                if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(Apellidos))
+                if (string.IsNullOrEmpty(Nombre) && string.IsNullOrEmpty(Apellidos))
                 {
-                    _avatar = string.Format("{0}{1}",
-                         Nombre.Substring(0, 1),
-                         Apellidos.Substring(0, 1));
+                    _avatar = Nombre.Substring(0, 2).ToUpper();
                 }
-                _avatar = Nombre.Substring(0, 2);
+                _avatar = string.Format("{0}{1}", Nombre.Substring(0, 1), Apellidos.Substring(0, 1)).ToUpper();
             }
         }
 
