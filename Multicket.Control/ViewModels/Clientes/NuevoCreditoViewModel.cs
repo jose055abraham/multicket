@@ -11,15 +11,10 @@ namespace Multicket.Module.ViewModels
 	[RegionMemberLifetime(KeepAlive = false)]
 	public class NuevoCreditoViewModel : ValidatorBase, INavigationAware
 	{
-		//private int _filio;
-		private string _fill;
 		private string _nombre;
 		private decimal _credito;
 		private string _telefono;
 		private string _ndireccion;
-		//private Guid _clienteId;
-		//private Guid _creditoId;
-		//private Guid _direccionId;
 		private Cliente cliente;
 		private Credito credito;
 		private Direccion direccion;
@@ -47,8 +42,6 @@ namespace Multicket.Module.ViewModels
 				cliente = new Cliente();
 				cliente.Nombre = Nombre;
 				cliente.Telefono = Telefono;
-				//cliente.Folio = Folio;
-				//cliente.Fill = Fill;
 
 				direccion = new Direccion();
 				direccion.Domicilio1 = Direccion;
@@ -60,8 +53,6 @@ namespace Multicket.Module.ViewModels
 			{
 				cliente.Nombre = Nombre;
 				cliente.Telefono = Telefono;
-				//cliente.Folio = Folio;
-				//cliente.Fill = Fill;
 				credito.LCredito = LCredito;
 				direccion.Domicilio1 = Direccion;
 			}
@@ -81,15 +72,10 @@ namespace Multicket.Module.ViewModels
 
 		private void OnClear()
 		{
-			//ClienteId = default;
-			//DireccionId = default;
-			//CreditoId = default;
 			Nombre = default;
 			Telefono = default;
 			Direccion = default;
 			LCredito = default;
-			//Folio = default;
-			//Fill = default;
 			cliente = default;
 			credito = default;
 			direccion = default;
@@ -103,13 +89,8 @@ namespace Multicket.Module.ViewModels
 			direccion = cliente.Direccion;
 			credito = cliente.Credito;
 
-			//ClienteId = cliente.Id;
-			//CreditoId = credito.Id;
-			//DireccionId = direccion.Id;
 			Nombre = cliente.Nombre;
 			Telefono = cliente.Telefono;
-			//Folio = cliente.Folio;
-			//Fill = cliente.Fill;
 			Direccion = direccion.Domicilio1;
 			LCredito = credito.LCredito;
 		}
@@ -164,41 +145,10 @@ namespace Multicket.Module.ViewModels
 			set => SetProperty(ref _telefono, value);
 		}
 
-		public string Fill
-		{
-			get => _fill;
-			set => SetProperty(ref _fill, value);
-		}
-
 		public decimal LCredito
 		{
 			get { return _credito; }
 			set { SetProperty(ref _credito, value); }
 		}
-
-		//public int Folio
-		//{
-		//    get => _filio;
-		//    set => SetProperty(ref _filio, value);
-		//}
-
-		//public Guid ClienteId
-		//{
-		//    get { return _clienteId; }
-		//    set { SetProperty(ref _clienteId, value); }
-		//}
-
-		//public Guid DireccionId
-		//{
-		//    get { return _direccionId; }
-		//    set { SetProperty(ref _direccionId, value); }
-		//}
-
-		//public Guid CreditoId
-		//{
-		//    get { return _creditoId; }
-		//    set { SetProperty(ref _creditoId, value); }
-		//}
-
 	}
 }
