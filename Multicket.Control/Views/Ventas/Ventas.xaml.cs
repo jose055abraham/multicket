@@ -12,9 +12,9 @@ namespace Multicket.Module.Views
             InitializeComponent();
         }
 
-        private void KeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
-        {
-            ((TextBox)sender).Focus();
-        }
+        //private void KeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
+        //{
+        //    ((TextBox)sender).Focus();
+        //}
     }
 }

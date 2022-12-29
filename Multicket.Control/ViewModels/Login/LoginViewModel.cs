@@ -34,7 +34,7 @@ namespace Multicket.Module.ViewModels
 
             if (src.data.Verify(Nombre, Password) is null)
             {
-                src.dialog.ShowDialog("Warning", new DialogParameters
+                src.dialog.ShowDialog("Information", new DialogParameters
             {
                     {"title","Warning" },
                     {"caption", "Usuario no encontrado" },

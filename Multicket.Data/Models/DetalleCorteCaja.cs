@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Multicket.Data.Services;
+using System;
 
 namespace Multicket.Data.Models
 {
-    public partial class DetalleCorteCaja
+    public partial class DetalleCorteCaja : Repository
     {
         partial void OnCreated();
         public virtual Guid Id { get; set; }
@@ -26,6 +27,11 @@ namespace Multicket.Data.Models
                 Updated_At = DateTime.Now;
             }
 
+        }
+
+        public virtual bool Save()
+        {
+            return Insert(this);
         }
 
         public DetalleCorteCaja()

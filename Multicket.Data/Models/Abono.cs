@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Multicket.Data.Services;
+using System;
 
 namespace Multicket.Data.Models
 {
-    public partial class Abono
+    public partial class Abono : Repository
     {
         partial void OnCreated();
         public virtual Guid Id { get; set; }
@@ -12,6 +13,11 @@ namespace Multicket.Data.Models
         public virtual DateTime? Updated_At { get; set; }
         public virtual VentaACredito VentaACredito { get; set; }
         public virtual Empleado Empleado { get; set; }
+
+        public virtual bool Save()
+        {
+            return Insert(this);
+        }
 
         public virtual void OnVeryfi()
         {

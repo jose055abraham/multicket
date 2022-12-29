@@ -33,14 +33,8 @@ namespace Multicket.Data.Test
             usuario.Nombre = "José";
             usuario.Password = "12345";
 
-
-            foreach (Permiso permiso in permisos)
-            {
-                usuario.add(permiso);
-                business.Save(permiso);
-                permiso.add(usuario);
-            }
-            business.Save(usuario);
+            usuario.Add(permisos);
+            usuario.Save();
 
 
         }
@@ -66,7 +60,7 @@ namespace Multicket.Data.Test
 
             foreach (var item in tipo_ventas)
             {
-                business.Save(item);
+                item.Save();
             }
 
         }
@@ -81,7 +75,7 @@ namespace Multicket.Data.Test
 
             foreach (var item in tipo_ventas)
             {
-                business.Save(item);
+                item.Save();
             }
 
         }

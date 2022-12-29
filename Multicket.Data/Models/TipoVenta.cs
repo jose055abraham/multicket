@@ -1,10 +1,11 @@
 ﻿using Multicket.Data.Enum;
+using Multicket.Data.Services;
 using System;
 using System.Collections.Generic;
 
 namespace Multicket.Data.Models
 {
-    public partial class TipoVenta
+    public partial class TipoVenta : Repository
     {
         partial void OnCreated();
         public virtual Guid Id { get; set; }
@@ -15,24 +16,29 @@ namespace Multicket.Data.Models
         public virtual ISet<Pieza> Pieza { get; set; }
 
 
-        public virtual void add(Producto producto)
+        public virtual void Add(Producto producto)
         {
             producto.TipoVenta = this;
         }
 
-        public virtual void add(Agranel agranel)
+        public virtual void Add(Agranel agranel)
         {
             agranel.TipoVenta = this;
         }
 
-        public virtual void add(Paquete paquete)
+        public virtual void Add(Paquete paquete)
         {
             paquete.TipoVenta = this;
         }
 
-        public virtual void add(Pieza pieza)
+        public virtual void Add(Pieza pieza)
         {
             pieza.TipoVenta = this;
+        }
+
+        public virtual bool Save()
+        {
+            return Insert(this);
         }
 
         public TipoVenta()

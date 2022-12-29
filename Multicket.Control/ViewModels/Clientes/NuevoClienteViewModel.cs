@@ -109,11 +109,11 @@ namespace Multicket.Module.ViewModels
             };
 
             cliente.OnVeryfi();
-            cliente.add(credito);
-            cliente.add(direccion);
-            src.data.Save(cliente);
-            src.data.Save(credito);
-            src.data.Save(direccion);
+            cliente.Add(credito);
+            cliente.Add(direccion);
+            cliente.Save();
+            credito.Save();
+            direccion.Save();
 
             src.dialog.ShowDialog("NotificationSuccess", new DialogParameters
             {

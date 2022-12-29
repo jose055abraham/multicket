@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Multicket.Data.Services;
+using System;
 
 namespace Multicket.Data.Models
 {
-    public partial class DetalleCaja
+    public partial class DetalleCaja : Repository
     {
         partial void OnCreated();
         public virtual Guid Id { get; set; }
@@ -12,6 +13,11 @@ namespace Multicket.Data.Models
         public virtual DateTime? Apertura_At { get; set; }
         public virtual DateTime? Cierre_At { get; set; }
         public virtual Caja Caja { get; set; }
+
+        public virtual bool Save()
+        {
+            return Insert(this);
+        }
 
         public DetalleCaja()
         {

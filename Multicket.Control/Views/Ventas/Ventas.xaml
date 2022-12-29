@@ -18,6 +18,7 @@
         <ui:KeyboardBehavior KeyDown="{Binding SalidasCommand}" KeyType="F8" />
         <ui:KeyboardBehavior KeyDown="{Binding EntradasCommand}" KeyType="F7" />
         <ui:KeyboardBehavior KeyDown="{Binding ProductosVariosCommand}" KeyType="Insert" />
+        <ui:KeyboardBehavior KeyDown="{Binding AgregarVentaCommand}" KeyType="Enter" />
     </i:Interaction.Behaviors>
 
     <Grid Background="{StaticResource WindowBackgroundBrush}">
@@ -73,24 +74,24 @@
                     ui:Focus.IsKeyboardFocused="True"
                     FontFamily="{StaticResource CourierPrimeRegular}"
                     FontSize="18"
-                    Text="{Binding Codigo}"
+                    Text="{Binding Codigo, UpdateSourceTrigger=PropertyChanged}"
                     TextWrapping="Wrap">
 
-                    <i:Interaction.Triggers>
+                    <!--<i:Interaction.Triggers>
                         <i:KeyTrigger Key="Enter">
                             <i:InvokeCommandAction
                                 Command="{Binding AgregarCommand}"
                                 CommandParameter="{Binding ElementName=Codigo, Path=Text}"
                                 PassEventArgsToCommand="True" />
                         </i:KeyTrigger>
-                    </i:Interaction.Triggers>
+                    </i:Interaction.Triggers>-->
 
                 </TextBox>
 
                 <ui:ImageButton
                     Height="33"
                     Margin="{StaticResource T-L5}"
-                    Command="{Binding AgregarCommand}"
+                    Command="{Binding AgregarVentaCommand}"
                     CommandParameter="{Binding ElementName=Codigo, Path=Text}"
                     Content="Agregar Producto"
                     FontFamily="{StaticResource CenturyGothic}"

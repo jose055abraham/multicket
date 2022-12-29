@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Multicket.Data.Services;
+using System;
 using System.Collections.Generic;
 
 namespace Multicket.Data.Models
 {
-    public partial class Producto
+    public partial class Producto : Repository
     {
 
         partial void OnCreated();
@@ -24,17 +25,17 @@ namespace Multicket.Data.Models
         public virtual ISet<DetalleVenta> DetalleVenta { get; set; }
         public virtual ISet<Paquete> Paquete { get; set; }
 
-        public virtual void add(DetalleVenta detalle)
+        public virtual void Add(DetalleVenta detalle)
         {
             detalle.Producto = this;
         }
 
-        public virtual void add(Inventario inventario)
+        public virtual void Add(Inventario inventario)
         {
             inventario.Producto = this;
         }
 
-        public virtual void add(Paquete paquete)
+        public virtual void Add(Paquete paquete)
         {
             Paquete.Add(paquete);
         }
@@ -50,6 +51,11 @@ namespace Multicket.Data.Models
                 Updated_At = DateTime.Now;
             }
 
+        }
+
+        public virtual bool Save()
+        {
+            return Insert(this);
         }
 
         public Producto()

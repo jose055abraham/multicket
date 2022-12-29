@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Multicket.Data.Services;
+using System;
 
 namespace Multicket.Data.Models
 {
-    public partial class Inventario
+    public partial class Inventario : Repository
     {
         partial void OnCreated();
         public virtual Guid Id { get; set; }
@@ -10,6 +11,11 @@ namespace Multicket.Data.Models
         public virtual int NumeroMaximo { get; set; }
         public virtual int NumeroMinimo { get; set; }
         public virtual Producto Producto { get; set; }
+
+        public virtual bool Save()
+        {
+            return Insert(this);
+        }
 
         public Inventario()
         {

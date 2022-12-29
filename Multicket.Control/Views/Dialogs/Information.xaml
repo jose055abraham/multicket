@@ -46,6 +46,7 @@
             Text="{Binding Message, FallbackValue='Contenido del mensaje, ejemplo de advertencia'}"
             TextWrapping="Wrap"
             HorizontalAlignment="Center"
+            VerticalAlignment="Center"
             Grid.ColumnSpan="3"
             Grid.Column="0"
             Grid.Row="1"/>

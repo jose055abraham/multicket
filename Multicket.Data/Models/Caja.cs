@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Multicket.Data.Services;
+using System;
 using System.Collections.Generic;
 
 namespace Multicket.Data.Models
 {
-    public partial class Caja
+    public partial class Caja : Repository
     {
         partial void OnCreated();
         public virtual Guid Id { get; set; }
@@ -13,19 +14,24 @@ namespace Multicket.Data.Models
         public virtual ISet<DetalleCaja> DetallesCaja { get; set; }
         public virtual ISet<DetalleCorteCaja> DetallesCorteCaja { get; set; }
 
-        public virtual void add(DetalleCaja detalle)
+        public virtual void Add(DetalleCaja detalle)
         {
             detalle.Caja = this;
         }
 
-        public virtual void add(DetalleCorteCaja corte)
+        public virtual void Add(DetalleCorteCaja corte)
         {
             corte.Caja = this;
         }
 
-        public virtual void add(Empleado empleado)
+        public virtual void Add(Empleado empleado)
         {
             empleado.Caja = this;
+        }
+
+        public virtual bool Save()
+        {
+            return Insert(this);
         }
 
         public Caja()

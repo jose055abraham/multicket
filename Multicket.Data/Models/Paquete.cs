@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Multicket.Data.Services;
+using System;
 using System.Collections.Generic;
 
 namespace Multicket.Data.Models
 {
-    public partial class Paquete
+    public partial class Paquete : Repository
     {
         partial void OnCreated();
         public virtual Guid Id { get; set; }
@@ -11,11 +12,16 @@ namespace Multicket.Data.Models
         public virtual int? Cantidad { get; set; }
         public virtual TipoVenta TipoVenta { get; set; }
         public virtual ISet<Producto> Producto { get; set; }
-        
 
-        public virtual void add(Producto producto)
+
+        public virtual void Add(Producto producto)
         {
             Producto.Add(producto);
+        }
+
+        public virtual bool Save()
+        {
+            return Insert(this);
         }
 
         public Paquete()
@@ -23,7 +29,7 @@ namespace Multicket.Data.Models
             Producto = new HashSet<Producto>();
             OnCreated();
         }
- 
+
         //public override string ToString()
         //{
         //    return Codigo;

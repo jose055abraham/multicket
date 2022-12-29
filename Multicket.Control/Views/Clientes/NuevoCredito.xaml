@@ -92,16 +92,16 @@
                     <TextBox
                         Grid.Row="1"
                         Grid.Column="1"
-                        Background="Transparent"
                         Width="400"
                         Margin="{StaticResource T-LTRB2}"
                         HorizontalAlignment="Left"
-                        VerticalContentAlignment="Center"                        
+                        VerticalContentAlignment="Center"
+                        Background="Transparent"
                         FontFamily="{StaticResource CourierPrimeRegular}"
                         FontSize="14"
                         Style="{StaticResource TextBoxGreen}"
-                        Text="{Binding Nombre, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" >
-                        
+                        Text="{Binding Nombre, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+
                         <!--<i:Interaction.Triggers>
                             <i:EventTrigger EventName="TextChenged">
                                 <i:InvokeCommandAction Command="{Binding TextChangedCommand}" PassEventArgsToCommand="True" />

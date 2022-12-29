@@ -29,11 +29,14 @@ namespace Multicket.Data.Config
                     .Database(MySQLConfiguration.Standard.ConnectionString(url).ShowSql())
                     .ExposeConfiguration((config) =>
                     {
+                        config.SetProperty("current_session_context_class", "web");
                         new SchemaExport(config).Create(true, false);
                         ConfigureNhibernateValidator(config);
                     })
                     .Mappings((e) => e.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly())
                     ).BuildConfiguration();
+
+
             //var config = new Configuration();
             //mapper = new ModelMapper();
             //config = new Configuration();

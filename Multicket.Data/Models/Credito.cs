@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Multicket.Data.Services;
+using System;
 using System.Collections.Generic;
 
 namespace Multicket.Data.Models
 {
 
-    public partial class Credito
+    public partial class Credito : Repository
     {
         partial void OnCreated();
         public virtual Guid Id { get; set; }
@@ -19,7 +20,7 @@ namespace Multicket.Data.Models
             return string.Format("{0} {1}", Id, LCredito);
         }
 
-        public virtual void add(VentaACredito credito)
+        public virtual void Add(VentaACredito credito)
         {
             credito.Credito = this;
         }
@@ -35,6 +36,11 @@ namespace Multicket.Data.Models
                 Updated_At = DateTime.Now;
             }
 
+        }
+
+        public virtual bool Save()
+        {
+            return Insert(this);
         }
 
         public Credito()

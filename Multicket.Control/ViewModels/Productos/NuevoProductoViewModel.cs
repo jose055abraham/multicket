@@ -89,19 +89,19 @@ namespace Multicket.Module.ViewModels
                 NumeroProductos = PExistentes
             };
 
-            SelectedDepartamentoItem.add(producto);
-            SelectedTipoVentaItem.add(producto);
-            producto.add(paquete);
-            paquete.add(producto);
+            SelectedDepartamentoItem.Add(producto);
+            SelectedTipoVentaItem.Add(producto);
+            producto.Add(paquete);
+            paquete.Add(producto);
             producto.OnVeryfi();
 
-            src.data.Save(producto);
-            src.data.Save(paquete);
+            producto.Save();
+            paquete.Save();
 
             if (EnInventario)
             {
-                producto.add(inventario);
-                src.data.Save(inventario);
+                producto.Add(inventario);
+                inventario.Save();
             }
 
 

@@ -5,187 +5,200 @@ using Multicket.Module.Services;
 using NHibernate.Validator.Constraints;
 using Prism.Regions;
 using Prism.Services.Dialogs;
-using System;
 
 namespace Multicket.Module.ViewModels
 {
-    [RegionMemberLifetime(KeepAlive = false)]
-    public class NuevoCreditoViewModel :  ValidatorBase, INavigationAware
-    {
-        private int _filio;
-        private string _fill;
-        private string _nombre;
-        private decimal _credito;
-        private string _telefono;
-        private string _direccion;
-        private Guid _clienteId;
-        private Guid _creditoId;
-        private Guid _direccionId;
-        private readonly IManagerService src;
+	[RegionMemberLifetime(KeepAlive = false)]
+	public class NuevoCreditoViewModel : ValidatorBase, INavigationAware
+	{
+		//private int _filio;
+		private string _fill;
+		private string _nombre;
+		private decimal _credito;
+		private string _telefono;
+		private string _ndireccion;
+		//private Guid _clienteId;
+		//private Guid _creditoId;
+		//private Guid _direccionId;
+		private Cliente cliente;
+		private Credito credito;
+		private Direccion direccion;
+		private readonly IManagerService src;
 
-        public NuevoCreditoViewModel(IManagerService service)
-        {
-            src = service;
-        }
+		public NuevoCreditoViewModel(IManagerService service)
+		{
+			src = service;
+		}
 
-        public Cliente Cliente { get; set; }
 
-        public RelayCommand GuardarCommand => new RelayCommand(action: OnGuardar, CanSave);
+		public RelayCommand GuardarCommand => new RelayCommand(action: OnGuardar, CanSave);
 
-        private bool CanSave(object obj)
-        {
-            return GetAllInvalidRules().Count == 0;
-        }
+		private bool CanSave(object obj)
+		{
+			return GetAllInvalidRules().Count == 0;
+		}
 
-        public RelayCommand CancelarClienteCommand => new RelayCommand(action: (e) => OnClear());
+		public RelayCommand CancelarClienteCommand => new RelayCommand(action: (e) => OnClear());
 
-        private void OnGuardar(object args)
-        {
-            var cliente = new Cliente
-            {
-                Id = ClienteId,
-                Nombre = Nombre,
-                Telefono = Telefono,
-                Folio = Folio,
-                Fill = Fill
-            };
+		private void OnGuardar(object args)
+		{
+			if (cliente is null)
+			{
+				cliente = new Cliente();
+				cliente.Nombre = Nombre;
+				cliente.Telefono = Telefono;
+				//cliente.Folio = Folio;
+				//cliente.Fill = Fill;
 
-            var direccion = new Direccion
-            {
-                Id = DireccionId,
-                Domicilio1 = Direccion,
-            };
+				direccion = new Direccion();
+				direccion.Domicilio1 = Direccion;
 
-            var credito = new Credito
-            {
-                Id = CreditoId,
-                LCredito = LCredito
-            };
+				credito = new Credito();
+				credito.LCredito = LCredito;
+			}
+			else
+			{
+				cliente.Nombre = Nombre;
+				cliente.Telefono = Telefono;
+				//cliente.Folio = Folio;
+				//cliente.Fill = Fill;
+				credito.LCredito = LCredito;
+				direccion.Domicilio1 = Direccion;
+			}
 
-            cliente.OnVeryfi();
-            cliente.add(credito);
-            cliente.add(direccion);
-            src.data.Save(cliente);
-            src.data.Save(credito);
-            src.data.Save(direccion);
-            Dialog("NotificationSuccess", "Datos actualizados");
-            OnClear();
-        }
+			cliente.OnVeryfi();
+			cliente.Add(credito);
+			cliente.Add(direccion);
+			cliente.Save();
+			credito.Save();
 
-        private void OnClear()
-        {
-            ClienteId = default;
-            DireccionId = default;
-            CreditoId = default;
-            Nombre = default;
-            Telefono = default;
-            Direccion = default;
-            LCredito = default;
-            Folio = default;
-            Fill = default;
-            return;
-        }
+			if (direccion.Save())
+			{
+				Dialog("NotificationSuccess", "Datos actualizados");
+				OnClear();
+			}
+		}
 
-        public void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            Cliente cliente = (Cliente)navigationContext.Parameters["SelectedClienteItem"];
-            if (cliente is null) return;
+		private void OnClear()
+		{
+			//ClienteId = default;
+			//DireccionId = default;
+			//CreditoId = default;
+			Nombre = default;
+			Telefono = default;
+			Direccion = default;
+			LCredito = default;
+			//Folio = default;
+			//Fill = default;
+			cliente = default;
+			credito = default;
+			direccion = default;
+		}
 
-            ClienteId = cliente.Id;
-            CreditoId = cliente.Credito.Id;
-            DireccionId = cliente.Direccion.Id;
-            Nombre = cliente.Nombre;
-            Telefono = cliente.Telefono;
-            Folio = cliente.Folio; 
-            Fill = cliente.Fill;
-            Direccion = cliente.Direccion.Domicilio1;
-            LCredito = cliente.Credito.LCredito;
-        }
+		public void OnNavigatedTo(NavigationContext navigationContext)
+		{
+			cliente = (Cliente)navigationContext.Parameters["SelectedClienteItem"];
+			if (cliente is null) return;
 
-        public bool IsNavigationTarget(NavigationContext navigationContext)
-        {
-            if (navigationContext.Parameters.ContainsKey("SelectedClienteItem"))
-            {
-                Cliente cliente = navigationContext.Parameters["SelectedClienteItem"] as Cliente;
-                if (cliente is null)
-                {
-                    return Cliente is null && Cliente.Nombre.Equals(cliente.Nombre);
-                }
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+			direccion = cliente.Direccion;
+			credito = cliente.Credito;
 
-        }
+			//ClienteId = cliente.Id;
+			//CreditoId = credito.Id;
+			//DireccionId = direccion.Id;
+			Nombre = cliente.Nombre;
+			Telefono = cliente.Telefono;
+			//Folio = cliente.Folio;
+			//Fill = cliente.Fill;
+			Direccion = direccion.Domicilio1;
+			LCredito = credito.LCredito;
+		}
 
-        public void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-        }
+		public bool IsNavigationTarget(NavigationContext navigationContext)
+		{
+			if (navigationContext.Parameters.ContainsKey("SelectedClienteItem"))
+			{
+				cliente = navigationContext.Parameters["SelectedClienteItem"] as Cliente;
 
-        private void Dialog(string key, string message = "")
-        {
-            src.dialog.ShowDialog(key,
-                new DialogParameters($"message={message}"), null);
-        }
+				if (cliente is null)
+				{
+					return cliente is null /*&& this.cliente.Nombre.Equals(cliente.Nombre)*/;
+				}
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 
-        [NotNullNotEmpty]
-        public string Nombre
-        {
-            get => _nombre;
-            set => SetProperty(ref _nombre, value);
-        }
+		}
 
-        [NotNullNotEmpty]
-        public string Direccion
-        {
-            get => _direccion;
-            set => SetProperty(ref _direccion, value);
-        }
-                
-        [Length(10, 10)]
-        public string Telefono
-        {
-            get => _telefono;
-            set => SetProperty(ref _telefono, value);
-        }
-        
-        public string Fill
-        {
-            get => _fill;
-            set => SetProperty(ref _fill, value);
-        }
-        
-        public decimal LCredito
-        {
-            get { return _credito; }
-            set { SetProperty(ref _credito, value); }
-        }
-        
-        public int Folio
-        {
-            get => _filio;
-            set => SetProperty(ref _filio, value);
-        }      
+		public void OnNavigatedFrom(NavigationContext navigationContext)
+		{
+		}
 
-        public Guid ClienteId
-        {
-            get { return _clienteId; }
-            set { SetProperty(ref _clienteId, value); }
-        }
+		private void Dialog(string key, string message = "")
+		{
+			src.dialog.ShowDialog(key,
+				new DialogParameters($"message={message}"), null);
+		}
 
-        public Guid DireccionId
-        {
-            get { return _direccionId; }
-            set { SetProperty(ref _direccionId, value); }
-        }
+		[NotNullNotEmpty]
+		public string Nombre
+		{
+			get => _nombre;
+			set => SetProperty(ref _nombre, value);
+		}
 
-        public Guid CreditoId
-        {
-            get { return _creditoId; }
-            set { SetProperty(ref _creditoId, value); }
-        }
+		[NotNullNotEmpty]
+		public string Direccion
+		{
+			get => _ndireccion;
+			set => SetProperty(ref _ndireccion, value);
+		}
 
-    }
+		[Length(10, 10)]
+		public string Telefono
+		{
+			get => _telefono;
+			set => SetProperty(ref _telefono, value);
+		}
+
+		public string Fill
+		{
+			get => _fill;
+			set => SetProperty(ref _fill, value);
+		}
+
+		public decimal LCredito
+		{
+			get { return _credito; }
+			set { SetProperty(ref _credito, value); }
+		}
+
+		//public int Folio
+		//{
+		//    get => _filio;
+		//    set => SetProperty(ref _filio, value);
+		//}
+
+		//public Guid ClienteId
+		//{
+		//    get { return _clienteId; }
+		//    set { SetProperty(ref _clienteId, value); }
+		//}
+
+		//public Guid DireccionId
+		//{
+		//    get { return _direccionId; }
+		//    set { SetProperty(ref _direccionId, value); }
+		//}
+
+		//public Guid CreditoId
+		//{
+		//    get { return _creditoId; }
+		//    set { SetProperty(ref _creditoId, value); }
+		//}
+
+	}
 }

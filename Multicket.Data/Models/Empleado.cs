@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Multicket.Data.Services;
+using System;
 using System.Collections.Generic;
 
 namespace Multicket.Data.Models
 {
-    public partial class Empleado
+    public partial class Empleado : Repository
     {
         partial void OnCreated();
         public virtual Guid Id { get; set; }
@@ -20,22 +21,22 @@ namespace Multicket.Data.Models
         public virtual ISet<Ingreso> Ingreso { get; set; }
         public virtual ISet<Egreso> Egreso { get; set; }
 
-        public virtual void add(Venta venta)
+        public virtual void Add(Venta venta)
         {
             venta.Empleado = this;
         }
 
-        public virtual void add(Ingreso ingreso)
+        public virtual void Add(Ingreso ingreso)
         {
             ingreso.Empleado = this;
         }
 
-        public virtual void add(Egreso egreso)
+        public virtual void Add(Egreso egreso)
         {
             egreso.Empleado = this;
         }
 
-        public virtual void add(Abono abono)
+        public virtual void Add(Abono abono)
         {
             abono.Empleado = this;
         }
@@ -51,6 +52,11 @@ namespace Multicket.Data.Models
                 Updated_At = DateTime.Now;
             }
 
+        }
+
+        public virtual bool Save()
+        {
+            return Insert(this);
         }
 
         public Empleado()

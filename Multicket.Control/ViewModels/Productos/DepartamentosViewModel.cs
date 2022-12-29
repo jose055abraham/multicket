@@ -54,9 +54,9 @@ namespace Multicket.Module.ViewModels
                 Id = Id,
                 Nombre = Nombre,
             };
-            
+
             dep.OnVeryfi();
-            src.data.Save(dep);
+            dep.Save();
 
             OnRefrehs();
             OnClear();
@@ -125,7 +125,7 @@ namespace Multicket.Module.ViewModels
             Nombre = default;
             DepartamentoItems = src.data.Find<Departamento>();
             DepartamentoFilterView = CollectionViewSource.GetDefaultView(DepartamentoItems);
-            DepartamentoFilterView.Filter = (e) => 
+            DepartamentoFilterView.Filter = (e) =>
             {
                 if (e is Departamento dep)
                 {

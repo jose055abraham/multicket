@@ -1,10 +1,11 @@
 ﻿using Multicket.Data.Common;
+using Multicket.Data.Services;
 using System;
 using System.Collections.Generic;
 
 namespace Multicket.Data.Models
 {
-    public partial class Cliente
+    public partial class Cliente : Repository
     {
         private string _avatar;
         partial void OnCreated();
@@ -30,23 +31,23 @@ namespace Multicket.Data.Models
             {
                 if (string.IsNullOrEmpty(Nombre) && string.IsNullOrEmpty(Apellidos))
                 {
-                    _avatar = Nombre.Substring(0, 2).ToUpper();
+                    _avatar = string.Format("{0}{1}", Nombre.Substring(0, 1), Apellidos.Substring(0, 1)).ToUpper();
                 }
-                _avatar = string.Format("{0}{1}", Nombre.Substring(0, 1), Apellidos.Substring(0, 1)).ToUpper();
+                _avatar = Nombre.Substring(0, 2).ToUpper();
             }
         }
 
-        public virtual void add(Credito credito)
+        public virtual void Add(Credito credito)
         {
             credito.Cliente = this;
         }
 
-        public virtual void add(Direccion direccion)
+        public virtual void Add(Direccion direccion)
         {
             direccion.Cliente = this;
         }
 
-        public virtual void add(Venta venta)
+        public virtual void Add(Venta venta)
         {
             venta.Cliente = this;
         }
@@ -63,6 +64,11 @@ namespace Multicket.Data.Models
             {
                 Updated_At = DateTime.Now;
             }
+        }
+
+        public virtual bool Save()
+        {
+            return Insert(this);
         }
 
         public Cliente()

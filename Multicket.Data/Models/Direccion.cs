@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Multicket.Data.Services;
+using System;
 
 namespace Multicket.Data.Models
 {
-    public partial class Direccion
+    public partial class Direccion : Repository
     {
         partial void OnCreated();
         public virtual Guid Id { get; set; }
@@ -15,12 +16,9 @@ namespace Multicket.Data.Models
         public virtual string Nota { get; set; }
         public virtual Cliente Cliente { get; set; }
 
-        public override string ToString()
+        public virtual bool Save()
         {
-            return string.Format(
-                "{0} {1} {2} {3} {4} {5} {6} {7}",
-                Id, Domicilio1, Domicilio2, Colonia, Municipio, Estado, CodigoPostal, Nota
-                );
+            return Insert(this);
         }
 
         public Direccion()
