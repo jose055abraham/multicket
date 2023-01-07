@@ -103,7 +103,7 @@ namespace Multicket.Module.Commands
         }
 
         /// <summary>
-        /// Executes the command, if it's set, providing the <see cref="CommandParameter"/>
+        /// Executes the command, if it's Set, providing the <see cref="CommandParameter"/>
         /// </summary>
         protected virtual void ExecuteCommand()
         {

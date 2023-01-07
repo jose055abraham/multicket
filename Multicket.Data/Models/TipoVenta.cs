@@ -1,4 +1,4 @@
-﻿using Multicket.Data.Enum;
+﻿using Multicket.Data.Models;
 using Multicket.Data.Services;
 using System;
 using System.Collections.Generic;
@@ -38,7 +38,7 @@ namespace Multicket.Data.Models
 
         public virtual bool Save()
         {
-            return Insert(this);
+            return Add(this);
         }
 
         public TipoVenta()

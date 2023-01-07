@@ -56,7 +56,7 @@ namespace Multicket.Data.Models
 
         public virtual bool Save()
         {
-            return Insert(this);
+            return Add(this);
         }
 
         public Empleado()

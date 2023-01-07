@@ -1,68 +1,82 @@
-﻿using Multicket.Data.Models;
+﻿using Multicket.Control.Mvvm;
+using Multicket.Data.Models;
 using Multicket.Module.Mvvm;
 using Multicket.Module.Services;
 using Prism.Regions;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Data;
 
 namespace Multicket.Module.ViewModels
 {
-    [RegionMemberLifetime(KeepAlive = false)]
-    public class EliminarClienteViewModel
-    {
-        private readonly IManagerService src;
-        private NavigationParameters Parameters;
+	[RegionMemberLifetime(KeepAlive = false)]
+	public class EliminarClienteViewModel : Bind
+	{
+		private readonly IManagerService src;
+		private NavigationParameters parameters;
 
-        public EliminarClienteViewModel(IManagerService service)
-        {
-            src = service;
-            Initialization();
-        }
+		public EliminarClienteViewModel(IManagerService service)
+		{
+			src = service;
+			Initialization();
+		}
 
-        public ICollectionView Clientes { get; set; }
-        public Cliente SelectedCliente { get; set; }
-        public string Buscar { get; set; }
+		public ICollectionView ClienteFilterView { get; set; }
+		public Cliente SelectedClienteItem { get; set; }
+		public string Buscar { get; set; }
 
-        public RelayCommand AceptarCommand => new RelayCommand(action: OnAceptar);
-        public RelayCommand SearchChangedCommand => new RelayCommand(action: OnSearchChanged);
+		public RelayCommand AceptarCommand => new RelayCommand(action: OnAceptar);
+		public RelayCommand SearchChangedCommand => new RelayCommand(action: OnSearchChanged);
 
-        private void OnSearchChanged(object sender)
-        {
-            Clientes.Refresh();
-            return;
-        }
+		private void OnSearchChanged(object sender)
+		{
+			OnFilterData();
+		}
 
-        private void OnAceptar(object sender)
-        {
-            if (SelectedCliente is null) return;
-            Parameters.Add(nameof(SelectedCliente), SelectedCliente);
-            Navigate("Creditos", "DetalleEliminarCliente", Parameters);
-            return;
-        }
+		private void OnAceptar(object sender)
+		{
+			if (SelectedClienteItem is null) return;
+			parameters.Add(nameof(SelectedClienteItem), SelectedClienteItem);
+			Navigate("Creditos", "DetalleEliminarCliente", parameters);
+			return;
+		}
 
-        private void Initialization()
-        {
-            Buscar = "";
-            Parameters = new NavigationParameters();
-            Clientes = new CollectionView(src.data.Find<Cliente>())
-            {
-                Filter = Filter
-            };
-        }
+		private void OnFilterData()
+		{
+			CollectionViewSource.GetDefaultView(ClienteItems).Refresh();
+		}
 
-        private bool Filter(object obj)
-        {
-            if (obj is Cliente cli)
-            {
-                return cli.Nombre.ToUpper().ToLower().Contains(Buscar)
-                    || cli.Folio.ToString().Contains(Buscar);
-            }
-            return false;
-        }
+		private void Initialization()
+		{
+			Buscar = "";
+			parameters = new NavigationParameters();
+			OnRefresh();
 
-        private void Navigate(string content, string view, NavigationParameters parasm)
-        {
-            src.region.RequestNavigate(content, view, parasm);
-        }
-    }
+		}
+
+		private void OnRefresh()
+		{
+			ClienteItems = src.data.Find<Cliente>();
+			ClienteFilterView = CollectionViewSource.GetDefaultView(ClienteItems);
+			ClienteFilterView.Filter = (e) =>
+			{
+				if (e is Cliente cli)
+				{
+					return cli.Nombre.Contains(Buscar);
+				}
+				return false;
+			};
+		}
+
+		private void Navigate(string content, string view, NavigationParameters parasm)
+		{
+			src.region.RequestNavigate(content, view, parasm);
+		}
+
+		public ISet<Cliente> ClienteItems
+		{
+			get => Get<ISet<Cliente>>();
+			set => Set(value);
+		}
+	}
 }

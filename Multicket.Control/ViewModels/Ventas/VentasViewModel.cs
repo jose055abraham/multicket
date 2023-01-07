@@ -78,7 +78,7 @@ namespace Multicket.Module.ViewModels
 
 		public void OnNavigatedTo(NavigationContext navigationContext)
 		{
-			//OnCompraVenta((string)navigationContext.Parameters["ProductoID"]);
+			//OnCompraVenta((string)navigationContext.parameters["ProductoID"]);
 		}
 
 		public bool IsNavigationTarget(NavigationContext navigationContext)

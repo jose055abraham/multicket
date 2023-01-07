@@ -17,7 +17,7 @@ namespace Multicket.Module.Components
         /// The search string treshold length.
         /// </summary>
         /// <remarks>
-        /// It's implemented as a Dependency Property, so you can set it in a XAML template 
+        /// It's implemented as a Dependency Property, so you can Set it in a XAML template 
         /// </remarks>
         public static readonly DependencyProperty MinimumSearchLengthProperty =
             DependencyProperty.Register(
@@ -48,7 +48,7 @@ namespace Multicket.Module.Components
         /// Initializes a new instance of the FilteredComboBox class.
         /// </summary>
         /// <remarks>
-        /// You could set 'IsTextSearchEnabled' to 'false' here,
+        /// You could Set 'IsTextSearchEnabled' to 'false' here,
         /// to avoid non-intuitive behavior of the control
         /// </remarks>
         public FilteredComboBox()
@@ -80,7 +80,7 @@ namespace Multicket.Module.Components
         /// </summary>
         /// <value>A reference to the internal editable textbox.</value>
         /// <remarks>
-        /// We need this to get access to the Selection.
+        /// We need this to Get access to the Selection.
         /// </remarks>
         protected TextBox EditableTextBox => GetTemplateChild("PART_EditableTextBox") as TextBox;
 

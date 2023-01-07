@@ -254,7 +254,7 @@ namespace Multicket.Module.Services
         /// Gets the current value or the default that you specify.
         /// </summary>
         /// <param name="key">Key for settings</param>
-        /// <param name="defaultValue">default value if not set</param>
+        /// <param name="defaultValue">default value if not Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>Value or default</returns>
         public decimal GetValueOrDefault(string key, decimal defaultValue, string fileName = null) =>
@@ -263,7 +263,7 @@ namespace Multicket.Module.Services
         /// Gets the current value or the default that you specify.
         /// </summary>
         /// <param name="key">Key for settings</param>
-        /// <param name="defaultValue">default value if not set</param>
+        /// <param name="defaultValue">default value if not Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>Value or default</returns>
         public bool GetValueOrDefault(string key, bool defaultValue, string fileName = null) =>
@@ -272,7 +272,7 @@ namespace Multicket.Module.Services
         /// Gets the current value or the default that you specify.
         /// </summary>
         /// <param name="key">Key for settings</param>
-        /// <param name="defaultValue">default value if not set</param>
+        /// <param name="defaultValue">default value if not Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>Value or default</returns>
         public long GetValueOrDefault(string key, long defaultValue, string fileName = null) =>
@@ -281,7 +281,7 @@ namespace Multicket.Module.Services
         /// Gets the current value or the default that you specify.
         /// </summary>
         /// <param name="key">Key for settings</param>
-        /// <param name="defaultValue">default value if not set</param>
+        /// <param name="defaultValue">default value if not Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>Value or default</returns>
         public string GetValueOrDefault(string key, string defaultValue, string fileName = null) =>
@@ -290,7 +290,7 @@ namespace Multicket.Module.Services
         /// Gets the current value or the default that you specify.
         /// </summary>
         /// <param name="key">Key for settings</param>
-        /// <param name="defaultValue">default value if not set</param>
+        /// <param name="defaultValue">default value if not Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>Value or default</returns>
         public int GetValueOrDefault(string key, int defaultValue, string fileName = null) =>
@@ -299,7 +299,7 @@ namespace Multicket.Module.Services
         /// Gets the current value or the default that you specify.
         /// </summary>
         /// <param name="key">Key for settings</param>
-        /// <param name="defaultValue">default value if not set</param>
+        /// <param name="defaultValue">default value if not Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>Value or default</returns>
         public float GetValueOrDefault(string key, float defaultValue, string fileName = null) =>
@@ -308,7 +308,7 @@ namespace Multicket.Module.Services
         /// Gets the current value or the default that you specify.
         /// </summary>
         /// <param name="key">Key for settings</param>
-        /// <param name="defaultValue">default value if not set</param>
+        /// <param name="defaultValue">default value if not Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>Value or default</returns>
         public DateTime GetValueOrDefault(string key, DateTime defaultValue, string fileName = null) =>
@@ -317,7 +317,7 @@ namespace Multicket.Module.Services
         /// Gets the current value or the default that you specify.
         /// </summary>
         /// <param name="key">Key for settings</param>
-        /// <param name="defaultValue">default value if not set</param>
+        /// <param name="defaultValue">default value if not Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>Value or default</returns>
         public Guid GetValueOrDefault(string key, Guid defaultValue, string fileName = null) =>
@@ -326,7 +326,7 @@ namespace Multicket.Module.Services
         /// Gets the current value or the default that you specify.
         /// </summary>
         /// <param name="key">Key for settings</param>
-        /// <param name="defaultValue">default value if not set</param>
+        /// <param name="defaultValue">default value if not Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>Value or default</returns>
         public double GetValueOrDefault(string key, double defaultValue, string fileName = null) =>
@@ -338,7 +338,7 @@ namespace Multicket.Module.Services
         /// Adds or updates the value 
         /// </summary>
         /// <param name="key">Key for settting</param>
-        /// <param name="value">Value to set</param>
+        /// <param name="value">Value to Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>True of was added or updated and you need to save it.</returns>
         public bool AddOrUpdateValue(string key, decimal value, string fileName = null) =>
@@ -347,7 +347,7 @@ namespace Multicket.Module.Services
         /// Adds or updates the value 
         /// </summary>
         /// <param name="key">Key for settting</param>
-        /// <param name="value">Value to set</param>
+        /// <param name="value">Value to Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>True of was added or updated and you need to save it.</returns>
         public bool AddOrUpdateValue(string key, bool value, string fileName = null) =>
@@ -356,7 +356,7 @@ namespace Multicket.Module.Services
         /// Adds or updates the value 
         /// </summary>
         /// <param name="key">Key for settting</param>
-        /// <param name="value">Value to set</param>
+        /// <param name="value">Value to Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>True of was added or updated and you need to save it.</returns>
         public bool AddOrUpdateValue(string key, long value, string fileName = null) =>
@@ -365,7 +365,7 @@ namespace Multicket.Module.Services
         /// Adds or updates the value 
         /// </summary>
         /// <param name="key">Key for settting</param>
-        /// <param name="value">Value to set</param>
+        /// <param name="value">Value to Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>True of was added or updated and you need to save it.</returns>
         public bool AddOrUpdateValue(string key, string value, string fileName = null) =>
@@ -374,7 +374,7 @@ namespace Multicket.Module.Services
         /// Adds or updates the value 
         /// </summary>
         /// <param name="key">Key for settting</param>
-        /// <param name="value">Value to set</param>
+        /// <param name="value">Value to Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>True of was added or updated and you need to save it.</returns>
         public bool AddOrUpdateValue(string key, int value, string fileName = null) =>
@@ -383,7 +383,7 @@ namespace Multicket.Module.Services
         /// Adds or updates the value 
         /// </summary>
         /// <param name="key">Key for settting</param>
-        /// <param name="value">Value to set</param>
+        /// <param name="value">Value to Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>True of was added or updated and you need to save it.</returns>
         public bool AddOrUpdateValue(string key, float value, string fileName = null) =>
@@ -392,7 +392,7 @@ namespace Multicket.Module.Services
         /// Adds or updates the value 
         /// </summary>
         /// <param name="key">Key for settting</param>
-        /// <param name="value">Value to set</param>
+        /// <param name="value">Value to Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>True of was added or updated and you need to save it.</returns>
         public bool AddOrUpdateValue(string key, DateTime value, string fileName = null) =>
@@ -401,7 +401,7 @@ namespace Multicket.Module.Services
         /// Adds or updates the value 
         /// </summary>
         /// <param name="key">Key for settting</param>
-        /// <param name="value">Value to set</param>
+        /// <param name="value">Value to Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>True of was added or updated and you need to save it.</returns>
         public bool AddOrUpdateValue(string key, Guid value, string fileName = null) =>
@@ -410,7 +410,7 @@ namespace Multicket.Module.Services
         /// Adds or updates the value 
         /// </summary>
         /// <param name="key">Key for settting</param>
-        /// <param name="value">Value to set</param>
+        /// <param name="value">Value to Set</param>
         /// <param name="fileName">Name of file for settings to be stored and retrieved </param>
         /// <returns>True of was added or updated and you need to save it.</returns>
         public bool AddOrUpdateValue(string key, double value, string fileName = null) =>

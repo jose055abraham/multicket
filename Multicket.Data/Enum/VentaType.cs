@@ -1,4 +1,4 @@
-﻿namespace Multicket.Data.Enum
+﻿namespace Multicket.Data.Models
 {
     public enum VentaType 
     {

@@ -1,5 +1,5 @@
-﻿using Multicket.Data.Models;
-using Multicket.Data.Validation;
+﻿using Multicket.Control.Mvvm;
+using Multicket.Data.Models;
 using Multicket.Module.Mvvm;
 using Multicket.Module.Services;
 using NHibernate.Validator.Constraints;
@@ -13,11 +13,8 @@ using System.Windows.Data;
 namespace Multicket.Module.ViewModels
 {
     [RegionMemberLifetime(KeepAlive = false)]
-    public class DepartamentosViewModel : ValidatorBase
+    public class DepartamentosViewModel : Bind
     {
-        private Guid _id;
-        private string _nombre;
-        private ISet<Departamento> _departamento;
         private readonly IManagerService src;
 
         public DepartamentosViewModel(IManagerService service)
@@ -144,21 +141,21 @@ namespace Multicket.Module.ViewModels
 
         public Guid Id
         {
-            get => _id;
-            set => SetProperty(ref _id, value);
+            get => Get<Guid>();
+            set => Set(value);
         }
 
         [NotNullNotEmpty]
         public string Nombre
         {
-            get => _nombre;
-            set => SetProperty(ref _nombre, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         public ISet<Departamento> DepartamentoItems
         {
-            get => _departamento;
-            set => SetProperty(ref _departamento, value);
+            get => Get<ISet<Departamento>>();
+            set => Set(value);
         }
     }
 }

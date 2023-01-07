@@ -101,16 +101,19 @@ namespace Multicket.Data.Services
 			}
 		}
 
-		public Usuario Verify(string user, string pass)
+		public bool Verify(string user, string pass)
 		{
 			using (ISession session = SessionManager.SetSessionFactory().OpenSession())
 			{
+				Usuario usuario;
 				try
 				{
-					return session.CreateCriteria<Usuario>()
-								  .Add(expression: Restrictions.Eq("Nombre", user))
-								  .Add(expression: Restrictions.Eq("Password", pass))
-								  .UniqueResult<Usuario>();
+					usuario = session.CreateCriteria<Usuario>()
+						.Add(expression: Restrictions.Eq("Nombre", user))
+						.Add(expression: Restrictions.Eq("Password", pass))
+						.UniqueResult<Usuario>();
+
+					if (usuario is null) return false;
 				}
 				catch (Exception)
 				{
@@ -122,6 +125,7 @@ namespace Multicket.Data.Services
 					session.Close();
 				}
 			}
+			return true;
 		}
 
 		public TEntity Select<TEntity>(Expression<Func<TEntity, bool>> expression) where TEntity : class, new()

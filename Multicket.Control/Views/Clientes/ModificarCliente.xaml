@@ -82,7 +82,7 @@
                                 FontSize="14" />
                             <Label
                                 Grid.Column="1"
-                                Content="{Binding FullNombre}"
+                                Content="{Binding Nombre}"
                                 FontFamily="{StaticResource CourierPrimeRegular}"
                                 FontSize="14" />
                         </Grid>

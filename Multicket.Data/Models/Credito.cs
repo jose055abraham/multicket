@@ -9,7 +9,7 @@ namespace Multicket.Data.Models
     {
         partial void OnCreated();
         public virtual Guid Id { get; set; }
-        public virtual decimal LCredito { get; set; }
+        public virtual decimal Importe { get; set; }
         public virtual DateTime? Created_At { get; set; }
         public virtual DateTime? Updated_At { get; set; }
         public virtual Cliente Cliente { get; set; }
@@ -17,7 +17,7 @@ namespace Multicket.Data.Models
 
         public override string ToString()
         {
-            return string.Format("{0} {1}", Id, LCredito);
+            return string.Format("{0} {1}", Id, Importe);
         }
 
         public virtual void Add(VentaACredito credito)
@@ -40,7 +40,7 @@ namespace Multicket.Data.Models
 
         public virtual bool Save()
         {
-            return Insert(this);
+            return Add(this);
         }
 
         public Credito()

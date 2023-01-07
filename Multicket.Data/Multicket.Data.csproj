@@ -32,18 +32,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\NHibernate-5.3.10-bin\Required_Bins\Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentNHibernate, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentNHibernate.2.1.0\lib\net461\FluentNHibernate.dll</HintPath>
+      <HintPath>..\packages\Antlr3.Runtime.3.5.2-rc1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\NHibernate-5.3.10-bin\Required_Bins\Iesi.Collections.dll</HintPath>
+      <HintPath>..\packages\Iesi.Collections.4.0.5\lib\net461\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\packages\NHibernate.5.3.13\lib\net461\NHibernate.dll</HintPath>
+    <Reference Include="NHibernate, Version=5.4.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.5.4.0\lib\net48\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.Validator, Version=5.1.0.0, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
       <HintPath>..\packages\NHibernate.Validator.5.1.0\lib\net461\NHibernate.Validator.dll</HintPath>
@@ -65,15 +60,15 @@
       <HintPath>..\..\..\NHibernate-5.3.10-bin\Required_Bins\Remotion.Linq.EagerFetching.dll</HintPath>
     </Reference>
     <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serilog.2.12.0\lib\net47\Serilog.dll</HintPath>
+      <HintPath>..\packages\Serilog.2.12.1-dev-01635\lib\net47\Serilog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.7.0.0-preview.2.22152.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -95,30 +90,6 @@
     <Compile Include="Config\ConfigManager.cs" />
     <Compile Include="Enum\PermisoType.cs" />
     <Compile Include="Enum\VentaType.cs" />
-    <Compile Include="Mappings\AbonoMap.cs" />
-    <Compile Include="Mappings\AgranelMap.cs" />
-    <Compile Include="Mappings\CajaMap.cs" />
-    <Compile Include="Mappings\ClienteMap.cs" />
-    <Compile Include="Mappings\CompraVentaMap.cs" />
-    <Compile Include="Mappings\CreditoMap.cs" />
-    <Compile Include="Mappings\DepartamentoMap.cs" />
-    <Compile Include="Mappings\DetalleCajaMap.cs" />
-    <Compile Include="Mappings\DetalleCorteCajaMap.cs" />
-    <Compile Include="Mappings\DetalleVentaMap.cs" />
-    <Compile Include="Mappings\DireccionMap.cs" />
-    <Compile Include="Mappings\EgresoMap.cs" />
-    <Compile Include="Mappings\EmpleadoMap.cs" />
-    <Compile Include="Mappings\IngresoMap.cs" />
-    <Compile Include="Mappings\InventarioMap.cs" />
-    <Compile Include="Mappings\PaqueteMap.cs" />
-    <Compile Include="Mappings\PermisoMap.cs" />
-    <Compile Include="Mappings\PiezaMap.cs" />
-    <Compile Include="Mappings\ProductoMap.cs" />
-    <Compile Include="Mappings\ProveedorMap.cs" />
-    <Compile Include="Mappings\TipoVentaMap.cs" />
-    <Compile Include="Mappings\UsuarioMap.cs" />
-    <Compile Include="Mappings\VentaACreditoMap.cs" />
-    <Compile Include="Mappings\VentaMap.cs" />
     <Compile Include="Models\Abono.cs" />
     <Compile Include="Models\Agranel.cs" />
     <Compile Include="Models\Caja.cs" />
@@ -149,12 +120,39 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BusinessBase.cs" />
     <Compile Include="Services\IBusinessBase.cs" />
-    <Compile Include="Validation\ValidatorBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="SharedLibs\nhibernate-mapping.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Abono.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Agranel.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Caja.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Cliente.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Credito.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Departamento.hbm.xml" />
+    <EmbeddedResource Include="Mappings\DetalleCaja.hbm.xml" />
+    <EmbeddedResource Include="Mappings\DetalleCorteCaja.hbm.xml" />
+    <EmbeddedResource Include="Mappings\DetalleVenta.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Direccion.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Egreso.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Empleado.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Ingreso.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Inventario.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Paquete.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Permiso.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Pieza.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Producto.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Proveedor.hbm.xml" />
+    <EmbeddedResource Include="Mappings\TipoVenta.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Usuario.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Venta.hbm.xml" />
+    <EmbeddedResource Include="Mappings\VentaACredito.hbm.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -15,6 +15,6 @@ namespace Multicket.Data.Services
 		ISet<TEntity> Query<TEntity>(Expression<Func<TEntity, bool>> expression) where TEntity : class, new();
 		TEntity Get<TEntity, TKey>(TKey key) where TEntity : class, new();
 		void Usuario(Usuario usuario);
-		Usuario Verify(string user, string pass);
+		bool Verify(string user, string pass);
 	}
 }

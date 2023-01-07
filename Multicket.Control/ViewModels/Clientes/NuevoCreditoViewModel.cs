@@ -1,5 +1,5 @@
-﻿using Multicket.Data.Models;
-using Multicket.Data.Validation;
+﻿using Multicket.Control.Mvvm;
+using Multicket.Data.Models;
 using Multicket.Module.Mvvm;
 using Multicket.Module.Services;
 using NHibernate.Validator.Constraints;
@@ -9,12 +9,8 @@ using Prism.Services.Dialogs;
 namespace Multicket.Module.ViewModels
 {
 	[RegionMemberLifetime(KeepAlive = false)]
-	public class NuevoCreditoViewModel : ValidatorBase, INavigationAware
+	public class NuevoCreditoViewModel : Bind, INavigationAware
 	{
-		private string _nombre;
-		private decimal _credito;
-		private string _telefono;
-		private string _ndireccion;
 		private Cliente cliente;
 		private Credito credito;
 		private Direccion direccion;
@@ -39,7 +35,7 @@ namespace Multicket.Module.ViewModels
 		{
 			if (cliente is null)
 			{
-				cliente = new Cliente();
+				cliente = new Cliente(Nombre, Telefono);
 				cliente.Nombre = Nombre;
 				cliente.Telefono = Telefono;
 
@@ -47,13 +43,13 @@ namespace Multicket.Module.ViewModels
 				direccion.Domicilio1 = Direccion;
 
 				credito = new Credito();
-				credito.LCredito = LCredito;
+				credito.Importe = LCredito;
 			}
 			else
 			{
 				cliente.Nombre = Nombre;
 				cliente.Telefono = Telefono;
-				credito.LCredito = LCredito;
+				credito.Importe = LCredito;
 				direccion.Domicilio1 = Direccion;
 			}
 
@@ -84,6 +80,7 @@ namespace Multicket.Module.ViewModels
 		public void OnNavigatedTo(NavigationContext navigationContext)
 		{
 			cliente = (Cliente)navigationContext.Parameters["SelectedClienteItem"];
+
 			if (cliente is null) return;
 
 			direccion = cliente.Direccion;
@@ -92,7 +89,7 @@ namespace Multicket.Module.ViewModels
 			Nombre = cliente.Nombre;
 			Telefono = cliente.Telefono;
 			Direccion = direccion.Domicilio1;
-			LCredito = credito.LCredito;
+			LCredito = credito.Importe;
 		}
 
 		public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -127,28 +124,28 @@ namespace Multicket.Module.ViewModels
 		[NotNullNotEmpty]
 		public string Nombre
 		{
-			get => _nombre;
-			set => SetProperty(ref _nombre, value);
+			get => Get<string>();
+			set => Set(value);
 		}
 
 		[NotNullNotEmpty]
 		public string Direccion
 		{
-			get => _ndireccion;
-			set => SetProperty(ref _ndireccion, value);
+			get => Get<string>();
+			set => Set(value);
 		}
 
 		[Length(10, 10)]
 		public string Telefono
 		{
-			get => _telefono;
-			set => SetProperty(ref _telefono, value);
+			get => Get<string>();
+			set => Set(value);
 		}
 
 		public decimal LCredito
 		{
-			get { return _credito; }
-			set { SetProperty(ref _credito, value); }
+			get => Get<decimal>();
+			set => Set(value);
 		}
 	}
 }

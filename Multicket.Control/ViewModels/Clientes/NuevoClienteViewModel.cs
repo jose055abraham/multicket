@@ -1,6 +1,6 @@
-﻿using Multicket.Data;
+﻿using Multicket.Control.Mvvm;
+using Multicket.Data;
 using Multicket.Data.Models;
-using Multicket.Data.Validation;
 using Multicket.Module.Mvvm;
 using Multicket.Module.Services;
 using NHibernate.Validator.Constraints;
@@ -15,31 +15,8 @@ using System.Windows.Data;
 namespace Multicket.Module.ViewModels
 {
     [RegionMemberLifetime(KeepAlive = false)]
-    public class NuevoClienteViewModel : ValidatorBase
+    public class NuevoClienteViewModel : Bind
     {
-        private int _folio;
-        private bool _checked;
-        private string _nombre;
-        private string _apellidos;
-        private string _telefono;
-        private string _correo;
-        private string _domicilio1;
-        private string _domicilio2;
-        private string _colonia;
-        private string _municipio;
-        private string _estado;
-        private string _codigop;
-        private string _avatar;
-        private string _nota;
-        private string _fill;
-        private decimal _lcredito;
-        private Guid _creditoid;
-        private Guid _clienteid;
-        private Guid _direccionid;
-        private Visibility _limitevbt;
-        private Visibility _creditovbt;
-        private ISet<Cliente> _clienteitems;
-        private int _selectedTipoCreditoIndex;
         private readonly IManagerService src;
 
         public NuevoClienteViewModel(IManagerService service)
@@ -93,7 +70,7 @@ namespace Multicket.Module.ViewModels
             Credito credito = new Credito
             {
                 Id = CreditoId,
-                LCredito = LCredito
+                Importe = LCredito
             };
 
             Direccion direccion = new Direccion
@@ -174,9 +151,9 @@ namespace Multicket.Module.ViewModels
             Credito = SelectedClienteItem.Credito;
             Direccion = SelectedClienteItem.Direccion;
 
-            IsChecked = Credito.LCredito >= 0;
-            SelectedTipoCreditoIndex = Credito.LCredito.Equals(0) ? 0 : 1;
-            SelectedTipoCreditoIndex = Credito.LCredito > 0 ? 1 : 0;
+            IsChecked = Credito.Importe >= 0;
+            SelectedTipoCreditoIndex = Credito.Importe.Equals(0) ? 0 : 1;
+            SelectedTipoCreditoIndex = Credito.Importe > 0 ? 1 : 0;
 
 
             ClienteId = SelectedClienteItem.Id;
@@ -196,7 +173,7 @@ namespace Multicket.Module.ViewModels
             Estado = Direccion.Estado;
             CP = Direccion.CodigoPostal;
             Nota = Direccion.Nota;
-            LCredito = Credito.LCredito;
+            LCredito = Credito.Importe;
             return;
         }
 
@@ -302,146 +279,146 @@ namespace Multicket.Module.ViewModels
 
         public Visibility LimiteVisible
         {
-            get => _limitevbt;
-            set => SetProperty(ref _limitevbt, value);
+            get => Get<Visibility>();
+            set => Set(value);
         }
 
         public Visibility CreditoVisible
         {
-            get => _creditovbt;
-            set => SetProperty(ref _creditovbt, value);
+            get => Get<Visibility>();
+            set => Set(value);
         }
 
         [NotNullNotEmpty]
         public string Nombre
         {
-            get => _nombre;
-            set => SetProperty(ref _nombre, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         [NotNullNotEmpty]
         public string Apellidos
         {
-            get => _apellidos;
-            set => SetProperty(ref _apellidos, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         [Length(10, 10)]
         public string Telefono
         {
-            get => _telefono;
-            set => SetProperty(ref _telefono, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         [Email]
         public string Correo
         {
-            get => _correo;
-            set => SetProperty(ref _correo, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         [NotNullNotEmpty]
         public string Domicilio1
         {
-            get => _domicilio1;
-            set => SetProperty(ref _domicilio1, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         public string Domicilio2
         {
-            get => _domicilio2;
-            set => SetProperty(ref _domicilio2, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         [NotNull]
         public string Colonia
         {
-            get => _colonia;
-            set => SetProperty(ref _colonia, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         public string Municipio
         {
-            get => _municipio;
-            set => SetProperty(ref _municipio, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         public string CP
         {
-            get => _codigop;
-            set => SetProperty(ref _codigop, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         public string Nota
         {
-            get => _nota;
-            set => SetProperty(ref _nota, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         public decimal LCredito
         {
-            get => _lcredito;
-            set => SetProperty(ref _lcredito, value);
+            get => Get<decimal>();
+            set => Set(value);
         }
 
         public string Fill
         {
-            get => _fill;
-            set => SetProperty(ref _fill, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         public string Estado
         {
-            get => _estado;
-            set => SetProperty(ref _estado, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         public string Avatar
         {
-            get => _avatar;
-            set => SetProperty(ref _avatar, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         public Guid ClienteId
         {
-            get => _clienteid;
-            set => SetProperty(ref _clienteid, value);
+            get => Get<Guid>();
+            set => Set(value);
         }
 
         public bool IsChecked
         {
-            get => _checked;
-            set => SetProperty(ref _checked, value);
+            get => Get<bool>();
+            set => Set(value);
         }
 
         public int Folio
         {
-            get => _folio;
-            set => SetProperty(ref _folio, value);
+            get => Get<int>();
+            set => Set(value);
         }
 
         public Guid DireccionId
         {
-            get => _direccionid;
-            set => SetProperty(ref _direccionid, value);
+            get => Get<Guid>();
+            set => Set(value);
         }
 
         public Guid CreditoId
         {
-            get => _creditoid;
-            set => SetProperty(ref _creditoid, value);
+            get => Get<Guid>();
+            set => Set(value);
         }
 
         public ISet<Cliente> ClienteItems
         {
-            get => _clienteitems;
-            set => SetProperty(ref _clienteitems, value);
+            get => Get<ISet<Cliente>>();
+            set => Set(value);
         }
 
         public int SelectedTipoCreditoIndex
         {
-            get => _selectedTipoCreditoIndex;
-            set => SetProperty(ref _selectedTipoCreditoIndex, value);
+            get => Get<int>();
+            set => Set(value);
         }
 
         #endregion

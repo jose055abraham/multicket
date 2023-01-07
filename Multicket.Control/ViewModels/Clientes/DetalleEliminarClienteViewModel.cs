@@ -1,140 +1,145 @@
-﻿using Multicket.Data.Models;
+﻿using Multicket.Control.Mvvm;
+using Multicket.Data.Models;
 using Multicket.Module.Mvvm;
 using Multicket.Module.Services;
-using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using System;
 
 namespace Multicket.Module.ViewModels
 {
-    [RegionMemberLifetime(KeepAlive = false)]
-    public class DetalleEliminarClienteViewModel : BindableBase, INavigationAware
-    {
-        private Guid _id;
-        private string _nombre;
-        private string _telefono;
-        private string _direccion;
-        private decimal? _lcredito;
-        private readonly IManagerService src;
+	[RegionMemberLifetime(KeepAlive = false)]
+	public class DetalleEliminarClienteViewModel : Bind, INavigationAware
+	{
+		private Cliente cliente;
+		private Credito credito;
+		private Direccion direccion;
+		private readonly IManagerService src;
 
-        public DetalleEliminarClienteViewModel(IManagerService service)
-        {
-            src = service;
-        }
+		public DetalleEliminarClienteViewModel(IManagerService service)
+		{
+			src = service;
+		}
 
-        public Cliente SelectedClienteItem { get; set; }
+		public RelayCommand CancelarCommand => new RelayCommand(action: OnCancelar);
+		public RelayCommand EliminarCommand => new RelayCommand(action: OnEliminar);
 
-        public RelayCommand CancelarCommand => new RelayCommand(action: OnCancelar);
-        public RelayCommand EliminarCommand => new RelayCommand(action: OnEliminar);
+		private void OnEliminar(object sender)
+		{
+			if (cliente is null) return;
 
-        private void OnEliminar(object sender)
-        {
-            if (SelectedClienteItem is null) return;
+			src.dialog.ShowDialog(
+				name: "Warning",
+				parameters: new DialogParameters
+				{
+					{ "message", "Esta seguro de eliminar la siguiente información?" },
+					{ "title", "Advertencia" },
+					{ "caption", "Eliminar registro" }
+				},
+				callback: (action) =>
+				{
+					if (action.Result == ButtonResult.OK)
+					{
+						src.data.Delete(cliente);
 
-            src.dialog.ShowDialog("Warning", 
-                parameters: new DialogParameters
-                {
-                    { "message", "Esta seguro de eliminar la siguiente información?" },
-                    { "title", "Advertencia" },
-                    { "caption", "Eliminar registro" }
-                }, callback: (action) =>
-                {
-                    if (action.Result == ButtonResult.OK)
-                    {
-                        src.data.Delete(SelectedClienteItem);
-                        src.dialog.ShowDialog("NotificationSuccess", new DialogParameters
-                        {
-                            {"message","Registro eliminado con exito" }
-                        }, null);
-                    }
-                    OnClear();
-                    Navigate("Creditos", "EliminarCliente");
-                });
+						src.dialog.ShowDialog(
+							name: "NotificationSuccess",
+							parameters: new DialogParameters
+						{
+							{"message","Registro eliminado con exito" }
+						}, null);
+					}
+					OnClear();
+					Navigate("Creditos", "EliminarCliente");
+				});
 
-        }
+		}
 
 
-        private void OnCancelar(object sender)
-        {
-            Navigate("Creditos", "EliminarCliente");
-            OnClear();
-            return;
-        }
+		private void OnCancelar(object sender)
+		{
+			Navigate("Creditos", "EliminarCliente");
+			OnClear();
+			return;
+		}
 
-        public void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            Cliente cliente = (Cliente)navigationContext.Parameters["SelectedClienteItem"];
-            if (cliente is null) return;
+		public void OnNavigatedTo(NavigationContext navigationContext)
+		{
+			cliente = (Cliente)navigationContext.Parameters["SelectedClienteItem"];
 
-            SelectedClienteItem = cliente;
-            Id = cliente.Id;
-            Nombre = cliente.Nombre;
-            Telefono = cliente.Telefono;
-            Direccion = cliente.Direccion.Domicilio1;
-            LCredito = cliente.Credito.LCredito;
-        }
+			if (cliente is null) return;
 
-        public bool IsNavigationTarget(NavigationContext navigationContext)
-        {
-            Cliente cliente = navigationContext.Parameters["SelectedClienteItem"] as Cliente;
-            if (cliente is null)
-            {
-                return SelectedClienteItem is null && SelectedClienteItem.Nombre.Equals(cliente.Nombre);
-            }
-            else
-            {
-                return false;
-            }
+			credito = cliente.Credito;
+			direccion = cliente.Direccion;
 
-        }
+			Id = cliente.Id;
+			Nombre = cliente.Nombre;
+			Telefono = cliente.Telefono;
+			Direccion = direccion.Domicilio1;
+			LCredito = credito.Importe;
+		}
 
-        public void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-        }
+		public bool IsNavigationTarget(NavigationContext navigationContext)
+		{
+			cliente = navigationContext.Parameters["SelectedClienteItem"] as Cliente;
 
-        private void OnClear()
-        {
-            Id = default;
-            Nombre = default;
-            Direccion = default;
-            Telefono = default;
-            LCredito = default;
-        }
+			if (cliente is null)
+			{
+				return cliente is null;
+			}
+			else
+			{
+				return false;
+			}
 
-        private void Navigate(string content, string view)
-        {
-            src.region.RequestNavigate(content, view);
-        }
+		}
 
-        public string Nombre
-        {
-            get { return _nombre; }
-            set { SetProperty(ref _nombre, value); }
-        }
+		public void OnNavigatedFrom(NavigationContext navigationContext)
+		{
+		}
 
-        public string Direccion
-        {
-            get { return _direccion; }
-            set { SetProperty(ref _direccion, value); }
-        }
+		private void OnClear()
+		{
+			Id = default;
+			Nombre = default;
+			Direccion = default;
+			Telefono = default;
+			LCredito = default;
+		}
 
-        public string Telefono
-        {
-            get { return _telefono; }
-            set { SetProperty(ref _telefono, value); }
-        }
+		private void Navigate(string content, string view)
+		{
+			src.region.RequestNavigate(content, view);
+		}
 
-        public decimal? LCredito
-        {
-            get { return _lcredito; }
-            set { SetProperty(ref _lcredito, value); }
-        }
+		public string Nombre
+		{
+			get => Get<string>();
+			set => Set(value);
+		}
 
-        public Guid Id
-        {
-            get { return _id; }
-            set { SetProperty(ref _id, value); }
-        }
-    }
+		public string Direccion
+		{
+			get => Get<string>();
+			set => Set(value);
+		}
+
+		public string Telefono
+		{
+			get => Get<string>();
+			set => Set(value);
+		}
+
+		public decimal? LCredito
+		{
+			get => Get<decimal?>();
+			set => Set(value);
+		}
+
+		public Guid Id
+		{
+			get => Get<Guid>();
+			set => Set(value);
+		}
+	}
 }

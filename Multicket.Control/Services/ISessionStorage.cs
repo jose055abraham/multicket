@@ -10,7 +10,7 @@ namespace Multicket.Module.Services
         void Set(Usuario usuario);
         void Destroy();
         string Uid { get; }
-        //string SelectedUsuarioItem { get; }
-        //DateTime CreatedAt { get; }
+        //string SelectedUsuarioItem { Get; }
+        //DateTime CreatedAt { Get; }
     }
 }

@@ -22,11 +22,11 @@ namespace Multicket.Data.Test
         {
             ISet<Permiso> permisos = new HashSet<Permiso>()
             {
-                new Permiso { PermisoType = Enum.PermisoType.Catalogo},
-                new Permiso { PermisoType = Enum.PermisoType.Apartamentos},
-                new Permiso { PermisoType = Enum.PermisoType.Venta},
-                new Permiso { PermisoType = Enum.PermisoType.Usuarios},
-                new Permiso { PermisoType = Enum.PermisoType.Ventas},
+                new Permiso { PermisoType = Models.PermisoType.Catalogo},
+                new Permiso { PermisoType = Models.PermisoType.Apartamentos},
+                new Permiso { PermisoType = Models.PermisoType.Venta},
+                new Permiso { PermisoType = Models.PermisoType.Usuarios},
+                new Permiso { PermisoType = Models.PermisoType.Ventas},
             };
 
             var usuario = new Usuario();
@@ -53,9 +53,9 @@ namespace Multicket.Data.Test
         {
             var tipo_ventas = new List<TipoVenta>()
             {
-                new TipoVenta { VentaType = Enum.VentaType.Paquete },
-                new TipoVenta { VentaType = Enum.VentaType.Pieza },
-                new TipoVenta { VentaType = Enum.VentaType.Agranel },
+                new TipoVenta { VentaType = Models.VentaType.Paquete },
+                new TipoVenta { VentaType = Models.VentaType.Pieza },
+                new TipoVenta { VentaType = Models.VentaType.Agranel },
             };
 
             foreach (var item in tipo_ventas)

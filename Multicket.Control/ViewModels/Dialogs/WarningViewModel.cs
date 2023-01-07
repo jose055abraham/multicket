@@ -6,7 +6,7 @@ using System;
 namespace Multicket.Module.ViewModels
 {
     /// <summary>
-    /// <para>Parameters { title , message, caption}</para>
+    /// <para>parameters { title , message, caption}</para>
     /// </summary>
     public class WarningViewModel : BindableBase, IDialogAware
     {

@@ -36,13 +36,13 @@
       <HintPath>..\..\..\NHibernate-5.3.10-bin\Required_Bins\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Iesi.Collections.4.0.4\lib\net461\Iesi.Collections.dll</HintPath>
+      <HintPath>..\packages\Iesi.Collections.4.0.5\lib\net461\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\packages\NHibernate.5.3.12\lib\net461\NHibernate.dll</HintPath>
+    <Reference Include="NHibernate, Version=5.4.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.5.4.0\lib\net48\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.Validator, Version=5.1.0.0, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
       <HintPath>..\packages\NHibernate.Validator.5.1.0\lib\net461\NHibernate.Validator.dll</HintPath>
@@ -114,8 +114,10 @@
     <Compile Include="Convert\NumberFormat.cs" />
     <Compile Include="Convert\ToUpperCace.cs" />
     <Compile Include="Convert\VisibilityConvertor.cs" />
+    <Compile Include="Mvvm\Bind.cs" />
     <Compile Include="Mvvm\EventArgs.cs" />
     <Compile Include="Mvvm\EventRaiser.cs" />
+    <Compile Include="Mvvm\BindableBase.cs" />
     <Compile Include="Mvvm\RelayCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CrossSettings.cs" />

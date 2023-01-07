@@ -1,8 +1,6 @@
 ﻿using Multicket.Data.Config;
 using NHibernate;
 using NHibernate.Context;
-using Serilog;
-using System;
 
 namespace Multicket.Data
 {
@@ -37,32 +35,32 @@ namespace Multicket.Data
 			return session;
 		}
 
-		public static void EndContextSession()
-		{
-			var factory = SetSessionFactory();
-			var session = CurrentSessionContext.Unbind(factory);
-			if (session != null && session.IsOpen)
-			{
-				try
-				{
-					if (session.Transaction != null && session.Transaction.IsActive)
-					{
-						session.Transaction.Rollback();
-						throw new Exception("Rolling back uncommited NHibernate transaction.");
-					}
-					session.Flush();
-				}
-				catch (Exception ex)
-				{
-					Log.Error("SessionKey.EndContextSession", ex);
-					throw;
-				}
-				finally
-				{
-					session.Close();
-					session.Dispose();
-				}
-			}
-		}
+		//public static void EndContextSession()
+		//{
+		//	var factory = SetSessionFactory();
+		//	var session = CurrentSessionContext.Unbind(factory);
+		//	if (session != null && session.IsOpen)
+		//	{
+		//		try
+		//		{
+		//			if (session.Transaction != null && session.Transaction.IsActive)
+		//			{
+		//				session.Transaction.Rollback();
+		//				throw new Exception("Rolling back uncommited NHibernate transaction.");
+		//			}
+		//			session.Flush();
+		//		}
+		//		catch (Exception ex)
+		//		{
+		//			Log.Error("SessionKey.EndContextSession", ex);
+		//			throw;
+		//		}
+		//		finally
+		//		{
+		//			session.Close();
+		//			session.Dispose();
+		//		}
+		//	}
+		//}
 	}
 }

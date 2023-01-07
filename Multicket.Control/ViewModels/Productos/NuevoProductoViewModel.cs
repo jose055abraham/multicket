@@ -1,39 +1,23 @@
-﻿using Multicket.Data.Enum;
+﻿using Multicket.Control.Mvvm;
 using Multicket.Data.Models;
-using Multicket.Data.Validation;
+using Multicket.Data.Models;
 using Multicket.Module.Commands;
 using Multicket.Module.Mvvm;
 using Multicket.Module.Services;
 using NHibernate.Validator.Constraints;
 using Prism.Regions;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Multicket.Module.ViewModels
 {
     [RegionMemberLifetime(KeepAlive = true)]
-    public class NuevoProductoViewModel : ValidatorBase, INavigationAware
+    public class NuevoProductoViewModel : Bind, INavigationAware
     {
-        private Guid _productoid;
-        private Guid _proveedorid;
-        private Guid _tipoventaid;
-        private Guid _inventarioid;
-        private int _pexistentes;
-        private int _ganancia;
-        private int _minimo;
-        private int _maximo;
-        private bool _isunidad;
-        private bool _isagranel;
-        private bool _eninventario;
-        private bool _ispaquete;
-        private string _depnombre;
-        private string _descripcion;
-        private string _codigo;
-        private decimal _preciocosto;
-        private decimal _precioventa;
-        private decimal _preciomayoreo;
-        private IApplicationCommands _cmd;
+        private TipoVenta tventa;
+        private Producto producto;
+        private Inventario inventario;
+        private Departamento departamento;
         private readonly IManagerService src;
 
 
@@ -53,8 +37,8 @@ namespace Multicket.Module.ViewModels
 
         public IApplicationCommands Cmd
         {
-            get { return _cmd; }
-            set { SetProperty(ref _cmd, value); }
+            get { return Get<IApplicationCommands>(); }
+            set { Set(value); }
         }
 
         public RelayCommand GuardarCommand => new RelayCommand(action: OnGuardar);
@@ -72,7 +56,6 @@ namespace Multicket.Module.ViewModels
 
             var producto = new Producto
             {
-                Id = ProductoId,
                 Codigo = Codigo,
                 Descripcion = Descripcion,
                 PrecioCosto = PrecioCosto,
@@ -83,7 +66,6 @@ namespace Multicket.Module.ViewModels
 
             var inventario = new Inventario
             {
-                Id = InventarioId,
                 NumeroMaximo = Maximo,
                 NumeroMinimo = Minimo,
                 NumeroProductos = PExistentes
@@ -115,10 +97,6 @@ namespace Multicket.Module.ViewModels
 
         private void Initialization()
         {
-            ProductoId = default;
-            ProveedorId = default;
-            TipoVentaId = default;
-            InventarioId = default;
             IsUnidad = true;
             EnInventario = false;
             PExistentes = default;
@@ -138,10 +116,6 @@ namespace Multicket.Module.ViewModels
 
         private void Clear()
         {
-            ProductoId = default;
-            ProveedorId = default;
-            TipoVentaId = default;
-            InventarioId = default;
             Codigo = default;
             DepNombre = default;
             Descripcion = default;
@@ -157,24 +131,28 @@ namespace Multicket.Module.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            Producto producto = (Producto)navigationContext.Parameters["SelectrdProductoItem"];
+            producto = (Producto)navigationContext.Parameters["SelectrdProductoItem"];
+
             if (producto is null) return;
 
-            ProductoId = producto.Id;
+            tventa = producto.TipoVenta;
+            inventario = producto.Inventario;
+            departamento = producto.Departamento;
+
             Codigo = producto.Codigo;
             Ganancia = producto.Ganancia;
             Descripcion = producto.Descripcion;
             PrecioCosto = producto.PrecioCosto;
             PrecioVenta = producto.PrecioVenta;
             PrecioMayoreo = producto.PrecioMayoreo;
-            DepNombre = producto.Departamento.Nombre;
+            DepNombre = departamento.Nombre;
             EnInventario = !(producto.Inventario is null);
-            Minimo = producto.Inventario.NumeroMinimo;
-            Maximo = producto.Inventario.NumeroMaximo;
-            PExistentes = producto.Inventario.NumeroProductos;
-            IsAgranel = producto.TipoVenta.VentaType.Equals(VentaType.Agranel);
-            IsPaquete = producto.TipoVenta.VentaType.Equals(VentaType.Paquete);
-            IsUnidad = producto.TipoVenta.VentaType.Equals(VentaType.Pieza);
+            Minimo = inventario.NumeroMinimo;
+            Maximo = inventario.NumeroMaximo;
+            PExistentes = inventario.NumeroProductos;
+            IsAgranel = tventa.VentaType.Equals(VentaType.Agranel);
+            IsPaquete = tventa.VentaType.Equals(VentaType.Paquete);
+            IsUnidad = tventa.VentaType.Equals(VentaType.Pieza);
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -205,111 +183,87 @@ namespace Multicket.Module.ViewModels
 
         public int PExistentes
         {
-            get => _pexistentes;
-            set => SetProperty(ref _pexistentes, value);
+            get => Get<int>();
+            set => Set(value);
         }
 
         public int Minimo
         {
-            get => _minimo;
-            set => SetProperty(ref _minimo, value);
+            get => Get<int>();
+            set => Set(value);
         }
 
         public int Maximo
         {
-            get => _maximo;
-            set => SetProperty(ref _maximo, value);
+            get => Get<int>();
+            set => Set(value);
         }
 
         [IsNumeric, NotNullNotEmpty]
         public string Codigo
         {
-            get => _codigo;
-            set => SetProperty(ref _codigo, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         public string Descripcion
         {
-            get => _descripcion;
-            set => SetProperty(ref _descripcion, value);
+            get => Get<string>();
+            set => Set(value);
         }
 
         public decimal PrecioCosto
         {
-            get => _preciocosto;
-            set => SetProperty(ref _preciocosto, value);
+            get => Get<decimal>();
+            set => Set(value);
         }
 
         public decimal PrecioVenta
         {
-            get => _precioventa;
-            set => SetProperty(ref _precioventa, value);
+            get => Get<decimal>();
+            set => Set(value);
         }
 
         public decimal PrecioMayoreo
         {
-            get => _preciomayoreo;
-            set => SetProperty(ref _preciomayoreo, value);
+            get => Get<decimal>();
+            set => Set(value);
         }
 
         public int Ganancia
         {
-            get => _ganancia;
-            set => SetProperty(ref _ganancia, value);
+            get => Get<int>();
+            set => Set(value);
         }
 
         public bool EnInventario
         {
-            get => _eninventario;
-            set => SetProperty(ref _eninventario, value);
+            get => Get<bool>();
+            set => Set(value);
         }
 
         public bool IsPaquete
         {
-            get => _ispaquete;
-            set => SetProperty(ref _ispaquete, value);
+            get => Get<bool>();
+            set => Set(value);
         }
 
         public bool IsAgranel
         {
-            get => _isagranel;
-            set => SetProperty(ref _isagranel, value);
+            get => Get<bool>();
+            set => Set(value);
         }
 
         public bool IsUnidad
         {
-            get => _isunidad;
-            set => SetProperty(ref _isunidad, value);
+            get => Get<bool>();
+            set => Set(value);
         }
 
         public string DepNombre
         {
-            get => _depnombre;
-            set => SetProperty(ref _depnombre, value);
-        }
-
-        public Guid ProductoId
-        {
-            get => _productoid;
-            set => SetProperty(ref _productoid, value);
-        }
-
-        public Guid ProveedorId
-        {
-            get => _proveedorid;
-            set => SetProperty(ref _proveedorid, value);
-        }
-
-        public Guid TipoVentaId
-        {
-            get => _tipoventaid;
-            set => SetProperty(ref _tipoventaid, value);
-        }
-
-        public Guid InventarioId
-        {
-            get => _inventarioid;
-            set => SetProperty(ref _inventarioid, value);
+            get => Get<string>();
+            set => Set(value);
         }
     }
 }
